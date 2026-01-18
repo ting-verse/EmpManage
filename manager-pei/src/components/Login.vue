@@ -19,6 +19,6 @@ export default {
 <template>
   <div>
     <h1>登录页</h1>
-    <div @click="goHome">返回首页</div>button>
+    <button @click="goHome">返回首页</button>
   </div>
 </template>

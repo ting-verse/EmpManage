@@ -8,11 +8,10 @@
 <template>
   <div>
     <router-view />
-    <el-button type="primary">Click me</el-button>
-    
   </div>
 </template>
 
-<style scoped>
-
+<style lang="scss">
+@import "./assets//style/index.scss";
+@import "./assets/style/reset.css";
 </style>
