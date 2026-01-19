@@ -32,7 +32,10 @@ export default {
         console.log(res)
         this.$api.login(this.user).then(res => {
           console.log(res)
+          this.$store.commit('setUserInfo', res)
+          this.$router.push("/welcome")
         })
+
       })
     }
   },
@@ -66,7 +69,7 @@ export default {
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" class="btn-login" @click="login">登录</el-button>
+          <el-button type="primary" class="btn-login" @click="login" >登录</el-button>
         </el-form-item>
       </el-form>
     </div>
