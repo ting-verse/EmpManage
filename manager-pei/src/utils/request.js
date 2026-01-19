@@ -47,10 +47,14 @@ function request(options) {
     options.params = options.data
   }
 
+  // 判断是否使用 mock：优先使用请求中的 mock 参数，否则使用全局配置
+  const useMock = typeof options.mock !== 'undefined' ? options.mock : config.mock
+
+  // 设置 baseURL：生产环境总是使用 baseApi，其他环境根据 mock 配置决定
   if (config.env === "prod") {
     service.defaults.baseURL = config.baseApi
   } else {
-    service.defaults.baseURL = config.mockApi ? config.mockApi : config.baseApi
+    service.defaults.baseURL = useMock && config.mockApi ? config.mockApi : config.baseApi
   }
 
   return service(options)
