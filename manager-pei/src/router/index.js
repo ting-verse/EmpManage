@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../components/Home.vue'
 
 const routes = [
   {
@@ -8,7 +7,7 @@ const routes = [
     meta: {
       title: '首页'
     },
-    component: Home,
+    component: () => import('../components/Home.vue'),
     redirect: '/welcome',
     children: [
       {
