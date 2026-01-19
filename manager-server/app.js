@@ -11,6 +11,7 @@ const log4js = require('./utils/log4j')
 
 // error handler（保持在最前面）
 onerror(app)
+require('./config/db')
 
 // middlewares
 app.use(bodyparser({
