@@ -15,7 +15,9 @@ export default {
         userName: 'Ting',
         userEmail: 'admin@example.com'
       },
-      isCollapse: false
+      isCollapse: false,
+      userMenu:[],
+      noticeCount: 0
     }
   },
   methods: {
@@ -27,7 +29,19 @@ export default {
     },
     toggle() {
       this.isCollapse = !this.isCollapse
+    },
+    async getNoticeCount() {
+      const res = await this.$api.noticeCount()
+      this.noticeCount = res
+    },
+    async getMenuList() {
+      const res = await this.$api.menuList()
+      this.userMenu = res
     }
+  },
+  mounted() {
+    this.getNoticeCount()
+    this.getMenuList()
   }
 }
 </script>
@@ -67,7 +81,7 @@ export default {
           <div class="bread">面包屑</div>
         </div>
         <div class="user-info">
-          <el-badge :is-dot="true" class="user-badge">
+          <el-badge :is-dot="noticeCount > 0 ? true : false" class="user-badge">
             <el-icon>
               <Bell />
             </el-icon>
