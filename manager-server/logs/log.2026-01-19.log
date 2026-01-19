@@ -1,0 +1,16 @@
+[2026-01-19T17:48:25.223] [ERROR] error - 错误信息: BUSINESS_ERROR is not defined
+错误堆栈: ReferenceError: BUSINESS_ERROR is not defined
+    at Object.fail (D:\myproject\EmpManage\manager-server\utils\util.js:32:24)
+    at D:\myproject\EmpManage\manager-server\routes\users.js:16:22
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async D:\myproject\EmpManage\manager-server\app.js:28:3
+    at async serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:9)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)
+[2026-01-19T17:49:10.031] [ERROR] error - 错误信息: BUSINESS_ERROR is not defined
+错误堆栈: ReferenceError: BUSINESS_ERROR is not defined
+    at Object.fail (D:\myproject\EmpManage\manager-server\utils\util.js:32:35)
+    at D:\myproject\EmpManage\manager-server\routes\users.js:16:22
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async D:\myproject\EmpManage\manager-server\app.js:28:3
+    at async serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:9)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)

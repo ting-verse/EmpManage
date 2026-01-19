@@ -29,13 +29,14 @@ export default {
     },
     login() {
       this.$refs.userForm.validate((res) => {
-        console.log(res)
-        this.$api.login(this.user).then(res => {
-          console.log(res)
-          this.$store.commit('setUserInfo', res)
-          this.$router.push("/welcome")
-        })
-
+        // console.log(res)
+        if (res) {
+          this.$api.login(this.user).then(res => {
+            // console.log(res)
+            this.$store.commit('setUserInfo', res)
+            this.$router.push("/welcome")
+          })
+        }
       })
     }
   },
@@ -55,21 +56,25 @@ export default {
       <el-form :model="user" :rules="rules" status-icon ref="userForm">
         <div class="title">登录</div>
         <el-form-item prop="userName">
-          <el-input type="text" placeholder="请输入用户名" v-model="user.userName"> 
+          <el-input type="text" placeholder="请输入用户名" v-model="user.userName">
             <template #prefix>
-              <el-icon><User /></el-icon>
+              <el-icon>
+                <User />
+              </el-icon>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="userPwd">
           <el-input type="password" placeholder="请输入密码" v-model="user.userPwd">
             <template #prefix>
-              <el-icon><View /></el-icon>
+              <el-icon>
+                <View />
+              </el-icon>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" class="btn-login" @click="login" >登录</el-button>
+          <el-button type="primary" class="btn-login" @click="login">登录</el-button>
         </el-form-item>
       </el-form>
     </div>

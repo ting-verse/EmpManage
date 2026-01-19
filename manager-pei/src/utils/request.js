@@ -21,23 +21,47 @@ service.interceptors.request.use((req) => {
   return req
 })
 
-service.interceptors.response.use(res => {
-  // 一些公共的响应的机制
-  const { code, data, msg } = res.data
+service.interceptors.response.use(
+  res => {
+    // 一些公共的响应的机制
+    const { code, data, msg } = res.data
 
-  if (code === 200) {
-    return data
-  } else if (code === 40001) {
-    ElMessage.error(TOKEN_ERROR)
-    setTimeout(() => {
-      router.push('/login')
-    }, 1500)
-    return Promise.reject(TOKEN_ERROR)
-  } else {
-    ElMessage.error(NETWORK_ERROR)
-    return Promise.reject(NETWORK_ERROR)
+    if (code === 200) {
+      return data
+    } else if (code === 50001) {
+      ElMessage.error(TOKEN_ERROR)
+      setTimeout(() => {
+        router.push('/login')
+      }, 1500)
+      return Promise.reject(TOKEN_ERROR)
+    } else {
+      // 显示后端返回的错误信息：优先使用 data（字符串类型），其次使用 msg
+      const errorMsg = (typeof data === 'string' && data) || msg || NETWORK_ERROR
+      ElMessage.error(errorMsg)
+      return Promise.reject(errorMsg)
+    }
+  },
+  error => {
+    // 处理网络错误、连接被拒绝等情况
+    if (error.response) {
+      // 服务器返回了响应，但状态码不在 2xx 范围内
+      const responseData = error.response.data || {}
+      const { code, data, msg } = responseData
+      // 优先使用 data（字符串类型），其次使用 msg
+      const errorMsg = (typeof data === 'string' && data) || msg || NETWORK_ERROR
+      ElMessage.error(errorMsg)
+      return Promise.reject(errorMsg)
+    } else if (error.request) {
+      // 请求已发出，但没有收到响应（可能是后端服务器未启动）
+      ElMessage.error('无法连接到服务器，请检查后端服务是否启动')
+      return Promise.reject('无法连接到服务器')
+    } else {
+      // 其他错误
+      ElMessage.error(error.message || NETWORK_ERROR)
+      return Promise.reject(error.message || NETWORK_ERROR)
+    }
   }
-})
+)
 
 // 核心的 request 函数
 function request(options) {

@@ -3,7 +3,7 @@ const env = import.meta.env.MODE || 'prod'
 
 const EnvConfig = {
   dev: {
-    baseApi: '/',
+    baseApi: '/api',
     mockApi: 'https://mock.apipark.cn/m1/4068509-0-default/api'
   },
   test: {
@@ -18,7 +18,7 @@ const EnvConfig = {
 
 export default {
   env,
-  mock:true,
+  // mock:true,
   ...EnvConfig[env],
   namespace:'manage'
 }
