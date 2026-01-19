@@ -24,7 +24,7 @@ export default {
   .content {
     position: relative;
     bottom: 40px;
-    text-align: center;
+    text-align: left;
     .sub-title {
       font-size: 30px;
       line-height: 42px;

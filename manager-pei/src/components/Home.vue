@@ -1,27 +1,47 @@
 <script>
-import { Setting, User, Document, Menu, Location,Fold } from '@element-plus/icons-vue'
+import { Setting, Document, Fold, Bell, ArrowDown } from '@element-plus/icons-vue'
 export default {
   name: 'Home',
   components: {
     Setting,
-    User,
     Document,
-    Menu,
-    Location,
-    Fold
+    Fold,
+    Bell,
+    ArrowDown
+  },
+  data() {
+    return {
+      userInfo: {
+        userName: 'Ting',
+        userEmail: 'admin@example.com'
+      },
+      isCollapse: false
+    }
+  },
+  methods: {
+    handleLogout(key) {
+      if (key == "email") return
+      this.$store.commit('clearUserInfo')
+      this.userInfo = null
+      this.$router.push('/login')
+    },
+    toggle() {
+      this.isCollapse = !this.isCollapse
+    }
   }
 }
 </script>
 
 <template>
   <div class="basic-layout">
-    <div class="nav-side">
+    <div :class="['nav-side', isCollapse ? 'fold' : 'unfold']">
       <div class="logo">
         <img src="../assets/images/logo.png" alt="logo">
         <span>Manager</span>
       </div>
       <!-- 菜单部分 -->
-      <el-menu default-active="2" class="nav-menu" background-color="#001529" text-color="#fff" :collapse="false" router>
+      <el-menu default-active="2" class="nav-menu" background-color="#001529" text-color="#fff" :collapse="isCollapse"
+        router>
         <el-sub-menu index="1">
           <template #title>
             <Setting class="menu-setting" />
@@ -40,13 +60,33 @@ export default {
         </el-sub-menu>
       </el-menu>
     </div>
-    <div class="content-right">
+    <div :class="['content-right', isCollapse ? 'fold' : 'unfold']">
       <div class="nav-top">
         <div class="nav-left">
-          <Fold class="menu-fold" />
+          <Fold class="menu-fold" @click="toggle" />
           <div class="bread">面包屑</div>
         </div>
-        <div class="user-info">admin</div>
+        <div class="user-info">
+          <el-badge :is-dot="true" class="user-badge">
+            <el-icon>
+              <Bell />
+            </el-icon>
+          </el-badge>
+          <el-dropdown @command="handleLogout">
+            <span class="user-link">
+              {{ userInfo.userName }}
+              <el-icon class="el-icon--right">
+                <ArrowDown />
+              </el-icon>
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item command="email">邮箱：{{ userInfo.userEmail }}</el-dropdown-item>
+                <el-dropdown-item command="logout">退出</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </div>
       </div>
       <div class="wrapper">
         <div class="main-page">
@@ -67,7 +107,6 @@ export default {
     height: 100vh;
     background-color: #001529;
     color: #fff;
-    overflow-y: auto;
     transition: width 0.5s;
 
     .logo {
@@ -86,11 +125,20 @@ export default {
     .nav-menu {
       border: none;
       height: calc(100vh - 50px);
+
       .menu-setting {
         width: 20px;
         height: 20px;
         margin: 0 15px;
       }
+    }
+
+    &.fold {
+      width: 64px;
+    }
+
+    &.unfold {
+      width: 200px;
     }
   }
 
@@ -109,11 +157,25 @@ export default {
       .nav-left {
         display: flex;
         align-items: center;
+        z-index: 1000;
+
         .menu-fold {
           width: 25px;
           height: 25px;
           cursor: pointer;
           margin-right: 15px;
+        }
+      }
+
+      .user-info {
+        .user-badge {
+          line-height: 30px;
+          cursor: pointer;
+        }
+
+        .user-link {
+          cursor: pointer;
+          color: #409eff
         }
       }
     }
@@ -127,6 +189,14 @@ export default {
         height: 100%;
         background-color: #fff;
       }
+    }
+
+    &.fold {
+      margin-left: 64px;
+    }
+
+    &.unfold {
+      margin-left: 200px;
     }
   }
 }
