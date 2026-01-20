@@ -65,3 +65,17 @@
     at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
     at serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:15)
     at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)
+[2026-01-20T15:26:32.176] [ERROR] error - 错误信息: utils is not defined
+错误堆栈: ReferenceError: utils is not defined
+    at D:\myproject\EmpManage\manager-server\app.js:36:18
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async D:\myproject\EmpManage\manager-server\app.js:33:3
+    at async serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:9)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)
+[2026-01-20T15:26:39.595] [ERROR] error - 错误信息: utils is not defined
+错误堆栈: ReferenceError: utils is not defined
+    at D:\myproject\EmpManage\manager-server\app.js:36:18
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async D:\myproject\EmpManage\manager-server\app.js:33:3
+    at async serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:9)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)

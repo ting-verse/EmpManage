@@ -17,7 +17,7 @@ const service = axios.create({
 service.interceptors.request.use((req) => {
   // 一些公共的请求的机制
   const header = req.headers
-  const {token} = storage.getItem('userInfo')
+  const {token = ""} = storage.getItem('userInfo') || {}
   if (!header.Authorization) {
     header.Authorization = `Bearer ${token}`
   }

@@ -6,8 +6,11 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const users = require('./routes/users')
 const log4js = require('./utils/log4j')
+const utils = require('./utils/util')
 const router = require('koa-router')()
-const jwt = require('jsonwebtoken')
+// const jwt = require('jsonwebtoken')
+const koajwt = require('koa-jwt')
+
 // error handler（保持在最前面）
 onerror(app)
 require('./config/db')
@@ -27,19 +30,27 @@ app.use(async (ctx, next) => {
   // 服务端 希望看到前端请求过来的数据
   log4js.info(`get params: ${JSON.stringify(ctx.request.query)}`)
   log4js.info(`post params: ${JSON.stringify(ctx.request.body)}`)
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
-  log4js.info(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  // const start = new Date()
+  await next().catch(err => {
+    if (err.status === 401) {
+      ctx.status = 200
+      ctx.body = utils.fail('Token认证失败',utils.CODE.AUTH_ERROR)
+    } else {
+      throw err
+    }
+  })
+  // const ms = new Date() - start
+  // log4js.info(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
-// router.prefix('/api')
-router.get('/leave/count', ctx => {
-  const token = ctx.request.headers.authorization.split(' ')[1]
-  const payload = jwt.verify(token, 'ting')
-  ctx.body = payload
-  // 拿到前端携带过来的 token 进行验证
-})
+app.use(koajwt({secret:'ting'}).unless({path:[/^\/api\/users\/login/]}))
+router.prefix('/api')
+// router.get('/leave/count', ctx => {
+//   const token = ctx.request.headers.authorization.split(' ')[1]
+//   const payload = jwt.verify(token, 'ting')
+//   ctx.body = payload
+//   // 拿到前端携带过来的 token 进行验证
+// })
 router.use(users.routes(), users.allowedMethods())
 // routes
 app.use(router.routes(), router.allowedMethods())

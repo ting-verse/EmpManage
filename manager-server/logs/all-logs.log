@@ -164,3 +164,30 @@
 [2026-01-20T15:12:16.398] [INFO] info - get params: {}
 [2026-01-20T15:12:16.399] [INFO] info - post params: {}
 [2026-01-20T15:12:16.400] [INFO] info - GET /leave/count - 1ms
+[2026-01-20T15:15:42.076] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:17:13.796] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:17:23.923] [INFO] info - get params: {}
+[2026-01-20T15:17:23.923] [INFO] info - post params: {}
+[2026-01-20T15:17:23.931] [INFO] info - get params: {}
+[2026-01-20T15:17:23.932] [INFO] info - post params: {}
+[2026-01-20T15:18:28.976] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:18:32.378] [INFO] info - get params: {}
+[2026-01-20T15:18:32.378] [INFO] info - post params: {}
+[2026-01-20T15:18:32.386] [INFO] info - get params: {}
+[2026-01-20T15:18:32.386] [INFO] info - post params: {}
+[2026-01-20T15:20:39.980] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:23:32.330] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:26:32.173] [INFO] info - get params: {}
+[2026-01-20T15:26:32.174] [INFO] info - post params: {"userName":"1","userPwd":"1"}
+[2026-01-20T15:26:39.594] [INFO] info - get params: {}
+[2026-01-20T15:26:39.594] [INFO] info - post params: {"userName":"admin","userPwd":"admin"}
+[2026-01-20T15:27:56.734] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:27:57.826] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:28:05.550] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:28:11.230] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:29:35.202] [INFO] info - get params: {}
+[2026-01-20T15:29:35.202] [INFO] info - post params: {"userName":"admin","userPwd":"admin"}
+[2026-01-20T15:29:35.344] [INFO] info - get params: {}
+[2026-01-20T15:29:35.345] [INFO] info - post params: {}
+[2026-01-20T15:29:35.352] [INFO] info - get params: {}
+[2026-01-20T15:29:35.352] [INFO] info - post params: {}

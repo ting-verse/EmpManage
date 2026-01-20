@@ -9,6 +9,7 @@ const CODE = {
 }
 
 module.exports = {
+  CODE,
   paper (pageNum = 1, pageSize = 10) {
     pageNum = pageNum * 1
     pageSize = pageSize * 1
