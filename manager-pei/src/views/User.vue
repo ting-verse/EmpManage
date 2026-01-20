@@ -25,18 +25,18 @@
     <div class="base-table">
       <div class="action">
         <el-button type="primary">新增用户</el-button>
-        <el-button type="danger">批量删除用户</el-button>
+        <el-button type="danger" @click="handlePatchDelete">批量删除用户</el-button>
       </div>
-      <el-table :data="userList" style="width: 100%">
+      <el-table :data="userList" style="width: 100%" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" />
         <el-table-column v-for="item in columns" :key="item.prop" :prop="item.prop" :label="item.label"
-          :width="item.width" />
+          :width="item.width" :formatter="item.formatter" />
         <el-table-column label="操作" width="150">
-          <template #default>
+          <template #default="scope">
             <el-button type="primary" size="mini">
               编辑
             </el-button>
-            <el-button type="danger" size="mini">
+            <el-button type="danger" size="mini" @click="handleDelete(scope.row)">
               删除
             </el-button>
           </template>
@@ -78,11 +78,24 @@ export default {
       },
       {
         label: '用户角色',
-        prop: 'role'
+        prop: 'role',
+        formatter: (row, column, value) => {
+          return {
+            0: '管理员',
+            1: '普通用户'
+          }[value]
+        }
       },
       {
         label: '用户状态',
-        prop: 'state'
+        prop: 'state',
+        formatter: (row, column, value) => {
+          return {
+            1: '在职',
+            2: '离职',
+            3: '试用期'
+          }[value] || '未知'
+        }
       },
       {
         label: '用户创建时间',
@@ -121,6 +134,39 @@ export default {
       pager.pageNum = current
       getUserList()
     }
+    // 用户单个删除
+    const handleDelete = async (row) => {
+      const res = await proxy.$api.userDelete({userIds:[row.userId]})
+      if (res.nModified > 0) {
+        proxy.$message.success('删除成功')
+        getUserList()
+      } else {
+        proxy.$message.error('删除失败')
+      }
+    }
+    // 用户批量删除
+    const checkedUsersIds = ref([])
+    const handlePatchDelete = async () => {
+      if (checkedUsersIds.value.length === 0) {
+        proxy.$message.warning('请选择要删除的用户')
+        return
+      }
+      const res = await proxy.$api.userDelete({userIds:checkedUsersIds.value})
+      if (res.nModified > 0) {
+        proxy.$message.success('删除成功')
+        getUserList()
+      } else {
+        proxy.$message.error('删除失败')
+      }
+    }
+    // 选择用户
+    const handleSelectionChange = (list) => {
+      let arr = []
+      list.forEach(item => {
+        arr.push(item.userId)
+      })
+      checkedUsersIds.value = arr
+    }
 
     // 组件挂载
     onMounted(() => {
@@ -133,9 +179,13 @@ export default {
       userList,
       columns,
       pager,
+      checkedUsersIds,
       handleQuery,
       handleReset,
-      handleCurrentChange
+      handleCurrentChange,
+      handleDelete,
+      handlePatchDelete,
+      handleSelectionChange
     }
   }
 }
