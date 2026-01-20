@@ -1,14 +1,14 @@
 <template>
   <div class="user-manage">
     <div class="query-form">
-      <el-form :inline="true" :model="user">
-        <el-form-item>
+      <el-form :inline="true" :model="user" ref="form">
+        <el-form-item label="用户ID" prop="userId">
           <el-input v-model="user.userId" placeholder="请输入用户ID"></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item label="用户名" prop="userName">
           <el-input v-model="user.userName" placeholder="请输入用户名"></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item label="状态" prop="state">
           <el-select v-model="user.state">
             <el-option :value="0" label="所有"></el-option>
             <el-option :value="1" label="在职"></el-option>
@@ -17,8 +17,8 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary">查询</el-button>
-          <el-button>重置</el-button>
+          <el-button type="primary" @click="handleQuery">查询</el-button>
+          <el-button @click="handleReset">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -42,37 +42,27 @@
           </template>
         </el-table-column>
       </el-table>
+      <el-pagination layout="prev, pager, next" :total="pager.total"  @current-change="handleCurrentChange" class="pagination"/>
     </div>
   </div>
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, ref, onMounted ,getCurrentInstance} from 'vue'
 export default {
   name: 'User',
   setup() {
-    const user = reactive({})
-    const userList = reactive([{
-        "state": 1,
-        "role": "0",
-        "roleList": [
-          "60180b07b1eaed6c45fbebdb",
-          "60150cb764de99631b2c3cd3",
-          "60180b59b1eaed6c45fbebdc"
-        ],
-        "deptId": [
-          "60167059c9027b7d2c520a61",
-          "60167345c6a4417f2d27506f"
-        ],
-        "userId": 1000002,
-        "userName": "admin",
-        "userEmail": "admin@jason.com",
-        "createTime": "2021-01-17T13:32:06.381Z",
-        "lastLoginTime": "2021-01-17T13:32:06.381Z",
-        "__v": 0,
-        "job": "前端架构师",
-        "mobile": "17611020000"
-      }])
+    // 获取代理对象
+    const { proxy } = getCurrentInstance()
+    const form = ref(null)
+    const user = reactive({
+      userId: '',
+      userName: '',
+      state: 0,
+    })
+    // 用户列表
+    const userList = ref([])
+    // 表格列配置
     const columns = reactive([
       {
         label: '用户ID',
@@ -104,10 +94,48 @@ export default {
       }
     ])
 
+    // 分页配置
+    const pager = reactive({
+      pageNum:1,  // 当前页码
+      pageSize:10,  // 每页条数
+      total:10  // 总条数
+    })
+    // 获取用户列表
+    const getUserList = async () => {
+      let params = {...user, ...pager}
+      const {page, list} = await proxy.$api.userList(params)
+      userList.value = list
+      pager.total = page.total
+    }
+    // 查询
+    const handleQuery = () => {
+      getUserList()
+    }
+    // 重置
+    const handleReset = () => {
+      form.value.resetFields()
+      getUserList()
+    }
+    // 分页
+    const handleCurrentChange = (current) => {
+      pager.pageNum = current
+      getUserList()
+    }
+
+    // 组件挂载
+    onMounted(() => {
+      getUserList()
+    })
+
     return {
+      form,
       user,
       userList,
-      columns
+      columns,
+      pager,
+      handleQuery,
+      handleReset,
+      handleCurrentChange
     }
   }
 }
