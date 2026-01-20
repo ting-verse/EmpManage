@@ -1,5 +1,6 @@
 <script>
 import { Setting, Document, Fold, Bell, ArrowDown } from '@element-plus/icons-vue'
+import TreeMenu from './TreeMenu.vue'
 export default {
   name: 'Home',
   components: {
@@ -7,13 +8,14 @@ export default {
     Document,
     Fold,
     Bell,
-    ArrowDown
+    ArrowDown,
+    TreeMenu
   },
   data() {
     return {
       userInfo: {
-        userName: 'Ting',
-        userEmail: 'admin@example.com'
+        userName: this.$store.state.userInfo.userName,
+        userEmail: this.$store.state.userInfo.userEmail
       },
       isCollapse: false,
       userMenu:[],
@@ -31,12 +33,23 @@ export default {
       this.isCollapse = !this.isCollapse
     },
     async getNoticeCount() {
-      const res = await this.$api.noticeCount()
-      this.noticeCount = res
+      try {
+        const res = await this.$api.noticeCount()
+        this.noticeCount = res || 0
+      } catch (error) {
+        console.error('获取通知数量失败:', error)
+        this.noticeCount = 0
+      }
     },
     async getMenuList() {
-      const res = await this.$api.menuList()
-      this.userMenu = res
+      try {
+        const res = await this.$api.menuList()
+        console.log('API 返回的菜单数据:', res)
+        this.userMenu = res || []
+      } catch (error) {
+        console.error('获取菜单列表失败:', error)
+        this.userMenu = []
+      }
     }
   },
   mounted() {
@@ -56,22 +69,7 @@ export default {
       <!-- 菜单部分 -->
       <el-menu default-active="2" class="nav-menu" background-color="#001529" text-color="#fff" :collapse="isCollapse"
         router>
-        <el-sub-menu index="1">
-          <template #title>
-            <Setting class="menu-setting" />
-            <span>系统管理</span>
-          </template>
-          <el-menu-item index="1-1">用户管理</el-menu-item>
-          <el-menu-item index="1-2">菜单管理</el-menu-item>
-        </el-sub-menu>
-        <el-sub-menu index="2">
-          <template #title>
-            <Document class="menu-setting" />
-            <span>审批管理</span>
-          </template>
-          <el-menu-item index="2-1">休假管理</el-menu-item>
-          <el-menu-item index="2-2">自我审批</el-menu-item>
-        </el-sub-menu>
+        <tree-menu :userMenu="userMenu"></tree-menu>
       </el-menu>
     </div>
     <div :class="['content-right', isCollapse ? 'fold' : 'unfold']">
