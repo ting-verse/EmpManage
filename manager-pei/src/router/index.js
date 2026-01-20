@@ -19,22 +19,12 @@ const routes = [
         component: () => import('../views/Welcome.vue'),
       },
       {
-        name: 'system',
-        path: '/system',
+        name: '用户管理',
+        path: '/system/user',
         meta: {
-          title: '系统管理'
+          title: '用户管理'
         },
-        component: () => import('../views/Welcome.vue'),
-        children: [
-          {
-            name: 'user',
-            path: 'user',  // 相对路径，会自动拼接为 /system/user
-            meta: {
-              title: '用户管理'
-            },
-            component: () => import('../views/Welcome.vue'),
-          }
-        ]
+        component: () => import('../views/User.vue'),
       }
     ]
   },

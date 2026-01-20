@@ -7,7 +7,7 @@ router.prefix('/users')
 router.post('/login',async ctx => {
   try {
     const {userName,userPwd} = ctx.request.body
-    const res = await User.findOne({userName,userPwd})
+    const res = await User.findOne({userName,userPwd},'userId userName userEmail state role deptId roleList')
     const data = res._doc
     const token = jwt.sign({data:'footbar'},'ting',{expiresIn:'1h'})
     if (res) {

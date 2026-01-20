@@ -20,7 +20,7 @@ export default {
         userEmail: this.$store.state.userInfo.userEmail
       },
       isCollapse: false,
-      userMenu:[],
+      userMenu: [],
       noticeCount: 0,
     }
   },
@@ -103,9 +103,7 @@ export default {
         </div>
       </div>
       <div class="wrapper">
-        <div class="main-page">
-          <router-view />
-        </div>
+        <router-view />
       </div>
     </div>
   </div>
