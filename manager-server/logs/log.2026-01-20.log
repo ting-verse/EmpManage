@@ -1,0 +1,67 @@
+[2026-01-20T15:07:38.598] [ERROR] error - 错误信息: Cannot read properties of undefined (reading 'split')
+错误堆栈: TypeError: Cannot read properties of undefined (reading 'split')
+    at D:\myproject\EmpManage\manager-server\app.js:38:51
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:44:32)
+    at next (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:45:18)
+    at D:\myproject\EmpManage\manager-server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:44:32)
+    at D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:36:12
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at D:\myproject\EmpManage\manager-server\app.js:31:9
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at views (D:\myproject\EmpManage\manager-server\node_modules\koa-views\src\index.js:91:12)
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:15)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)
+[2026-01-20T15:07:50.891] [ERROR] error - 错误信息: jwt expired
+错误堆栈: TokenExpiredError: jwt expired
+    at D:\myproject\EmpManage\manager-server\node_modules\jsonwebtoken\verify.js:152:21
+    at getSecret (D:\myproject\EmpManage\manager-server\node_modules\jsonwebtoken\verify.js:90:14)
+    at module.exports [as verify] (D:\myproject\EmpManage\manager-server\node_modules\jsonwebtoken\verify.js:94:10)
+    at D:\myproject\EmpManage\manager-server\app.js:39:23
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:44:32)
+    at next (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:45:18)
+    at D:\myproject\EmpManage\manager-server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:44:32)
+    at D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:36:12
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at D:\myproject\EmpManage\manager-server\app.js:31:9
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at views (D:\myproject\EmpManage\manager-server\node_modules\koa-views\src\index.js:91:12)
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:15)
+[2026-01-20T15:09:21.772] [ERROR] error - 错误信息: Cannot read properties of undefined (reading 'split')
+错误堆栈: TypeError: Cannot read properties of undefined (reading 'split')
+    at D:\myproject\EmpManage\manager-server\app.js:38:51
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:44:32)
+    at next (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:45:18)
+    at D:\myproject\EmpManage\manager-server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:44:32)
+    at D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:36:12
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at D:\myproject\EmpManage\manager-server\app.js:31:9
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at views (D:\myproject\EmpManage\manager-server\node_modules\koa-views\src\index.js:91:12)
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:15)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)
+[2026-01-20T15:11:22.524] [ERROR] error - 错误信息: jwt must be provided
+错误堆栈: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (D:\myproject\EmpManage\manager-server\node_modules\jsonwebtoken\verify.js:53:17)
+    at D:\myproject\EmpManage\manager-server\app.js:39:23
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:44:32)
+    at next (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:45:18)
+    at D:\myproject\EmpManage\manager-server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:44:32)
+    at D:\myproject\EmpManage\manager-server\node_modules\koa-compose\index.js:36:12
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at D:\myproject\EmpManage\manager-server\app.js:31:9
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at views (D:\myproject\EmpManage\manager-server\node_modules\koa-views\src\index.js:91:12)
+    at dispatch (D:\myproject\EmpManage\manager-server\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:15)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)

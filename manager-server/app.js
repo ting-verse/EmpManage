@@ -7,7 +7,7 @@ const bodyparser = require('koa-bodyparser')
 const users = require('./routes/users')
 const log4js = require('./utils/log4j')
 const router = require('koa-router')()
-
+const jwt = require('jsonwebtoken')
 // error handler（保持在最前面）
 onerror(app)
 require('./config/db')
@@ -34,6 +34,12 @@ app.use(async (ctx, next) => {
 })
 
 // router.prefix('/api')
+router.get('/leave/count', ctx => {
+  const token = ctx.request.headers.authorization.split(' ')[1]
+  const payload = jwt.verify(token, 'ting')
+  ctx.body = payload
+  // 拿到前端携带过来的 token 进行验证
+})
 router.use(users.routes(), users.allowedMethods())
 // routes
 app.use(router.routes(), router.allowedMethods())

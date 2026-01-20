@@ -84,3 +84,83 @@
 [2026-01-20T08:57:07.672] [INFO] info - post params: {"userName":"admin","userPwd":"admin"}
 [2026-01-20T08:57:07.701] [INFO] info - POST /users/login - 29ms
 [2026-01-20T09:08:42.404] [INFO] info - ***数据库连接成功***
+[2026-01-20T14:54:52.668] [INFO] info - ***数据库连接成功***
+[2026-01-20T14:55:51.966] [INFO] info - get params: {}
+[2026-01-20T14:55:51.966] [INFO] info - post params: {"userName":"11","userPwd":"11"}
+[2026-01-20T14:55:51.986] [INFO] info - POST /users/login - 19ms
+[2026-01-20T14:56:05.949] [INFO] info - get params: {}
+[2026-01-20T14:56:05.950] [INFO] info - post params: {"userName":"admin","userPwd":"admin"}
+[2026-01-20T14:56:05.961] [INFO] info - POST /users/login - 11ms
+[2026-01-20T14:56:29.479] [INFO] info - get params: {}
+[2026-01-20T14:56:29.479] [INFO] info - post params: {}
+[2026-01-20T14:56:29.479] [INFO] info - GET /leave/count - 0ms
+[2026-01-20T14:56:29.480] [INFO] info - get params: {}
+[2026-01-20T14:56:29.480] [INFO] info - post params: {}
+[2026-01-20T14:56:29.481] [INFO] info - GET /menu/list - 0ms
+[2026-01-20T14:56:32.135] [INFO] info - get params: {}
+[2026-01-20T14:56:32.135] [INFO] info - post params: {}
+[2026-01-20T14:56:32.136] [INFO] info - GET /menu/list - 0ms
+[2026-01-20T14:56:32.137] [INFO] info - get params: {}
+[2026-01-20T14:56:32.137] [INFO] info - post params: {}
+[2026-01-20T14:56:32.137] [INFO] info - GET /leave/count - 0ms
+[2026-01-20T14:57:16.736] [INFO] info - get params: {}
+[2026-01-20T14:57:16.737] [INFO] info - post params: {"userName":"user","userPwd":"user"}
+[2026-01-20T14:57:16.741] [INFO] info - POST /users/login - 4ms
+[2026-01-20T14:57:16.811] [INFO] info - get params: {}
+[2026-01-20T14:57:16.812] [INFO] info - post params: {}
+[2026-01-20T14:57:16.813] [INFO] info - GET /menu/list - 0ms
+[2026-01-20T14:57:16.814] [INFO] info - get params: {}
+[2026-01-20T14:57:16.814] [INFO] info - post params: {}
+[2026-01-20T14:57:16.814] [INFO] info - GET /leave/count - 0ms
+[2026-01-20T14:59:02.395] [INFO] info - ***数据库连接成功***
+[2026-01-20T14:59:07.105] [INFO] info - get params: {}
+[2026-01-20T14:59:07.105] [INFO] info - post params: {}
+[2026-01-20T14:59:07.107] [INFO] info - GET /leave/count - 1ms
+[2026-01-20T14:59:07.110] [INFO] info - get params: {}
+[2026-01-20T14:59:07.111] [INFO] info - post params: {}
+[2026-01-20T14:59:07.112] [INFO] info - GET /menu/list - 1ms
+[2026-01-20T14:59:57.345] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:02:33.464] [INFO] info - get params: {}
+[2026-01-20T15:02:33.465] [INFO] info - post params: {}
+[2026-01-20T15:02:33.466] [INFO] info - GET /leave/count - 1ms
+[2026-01-20T15:02:33.470] [INFO] info - get params: {}
+[2026-01-20T15:02:33.470] [INFO] info - post params: {}
+[2026-01-20T15:02:33.470] [INFO] info - GET /menu/list - 0ms
+[2026-01-20T15:02:47.576] [INFO] info - get params: {}
+[2026-01-20T15:02:47.577] [INFO] info - post params: {}
+[2026-01-20T15:02:47.577] [INFO] info - GET /leave/count - 0ms
+[2026-01-20T15:02:47.578] [INFO] info - get params: {}
+[2026-01-20T15:02:47.579] [INFO] info - post params: {}
+[2026-01-20T15:02:47.579] [INFO] info - GET /menu/list - 0ms
+[2026-01-20T15:05:30.016] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:05:59.319] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:07:38.531] [INFO] info - get params: {}
+[2026-01-20T15:07:38.532] [INFO] info - post params: {"userName":"admin","userPwd":"admin"}
+[2026-01-20T15:07:38.547] [INFO] info - POST /users/login - 14ms
+[2026-01-20T15:07:38.596] [INFO] info - get params: {}
+[2026-01-20T15:07:38.597] [INFO] info - post params: {}
+[2026-01-20T15:07:38.599] [INFO] info - get params: {}
+[2026-01-20T15:07:38.600] [INFO] info - post params: {}
+[2026-01-20T15:07:38.600] [INFO] info - GET /menu/list - 0ms
+[2026-01-20T15:07:50.888] [INFO] info - get params: {}
+[2026-01-20T15:07:50.888] [INFO] info - post params: {}
+[2026-01-20T15:07:50.888] [INFO] info - GET /menu/list - 0ms
+[2026-01-20T15:07:50.889] [INFO] info - get params: {}
+[2026-01-20T15:07:50.890] [INFO] info - post params: {}
+[2026-01-20T15:09:21.771] [INFO] info - get params: {}
+[2026-01-20T15:09:21.772] [INFO] info - post params: {}
+[2026-01-20T15:10:22.882] [INFO] info - ***数据库连接成功***
+[2026-01-20T15:11:22.452] [INFO] info - get params: {}
+[2026-01-20T15:11:22.453] [INFO] info - post params: {"userName":"admin","userPwd":"admin"}
+[2026-01-20T15:11:22.467] [INFO] info - POST /users/login - 14ms
+[2026-01-20T15:11:22.520] [INFO] info - get params: {}
+[2026-01-20T15:11:22.521] [INFO] info - post params: {}
+[2026-01-20T15:11:22.521] [INFO] info - GET /menu/list - 0ms
+[2026-01-20T15:11:22.523] [INFO] info - get params: {}
+[2026-01-20T15:11:22.523] [INFO] info - post params: {}
+[2026-01-20T15:12:16.396] [INFO] info - get params: {}
+[2026-01-20T15:12:16.397] [INFO] info - post params: {}
+[2026-01-20T15:12:16.398] [INFO] info - GET /menu/list - 0ms
+[2026-01-20T15:12:16.398] [INFO] info - get params: {}
+[2026-01-20T15:12:16.399] [INFO] info - post params: {}
+[2026-01-20T15:12:16.400] [INFO] info - GET /leave/count - 1ms
