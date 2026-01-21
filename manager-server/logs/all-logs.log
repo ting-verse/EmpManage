@@ -551,3 +551,45 @@
 [2026-01-21T15:41:46.194] [INFO] info - post params: {"userIds":[1000003,1000004]}
 [2026-01-21T15:41:46.208] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"3"}
 [2026-01-21T15:41:46.208] [INFO] info - post params: {}
+[2026-01-21T18:47:16.219] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"10"}
+[2026-01-21T18:47:16.220] [INFO] info - post params: {}
+[2026-01-21T18:47:17.903] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"10"}
+[2026-01-21T18:47:17.904] [INFO] info - post params: {}
+[2026-01-21T18:47:29.890] [INFO] info - get params: {}
+[2026-01-21T18:47:29.890] [INFO] info - post params: {"userName":"user","userPwd":"yser"}
+[2026-01-21T18:47:32.454] [INFO] info - get params: {}
+[2026-01-21T18:47:32.455] [INFO] info - post params: {"userName":"user","userPwd":"yser"}
+[2026-01-21T18:47:52.220] [INFO] info - get params: {}
+[2026-01-21T18:47:52.220] [INFO] info - post params: {"userName":"admin","userPwd":"admin"}
+[2026-01-21T18:47:54.688] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"10"}
+[2026-01-21T18:47:54.689] [INFO] info - post params: {}
+[2026-01-21T18:56:34.049] [INFO] info - ***数据库连接成功***
+[2026-01-21T18:56:51.799] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"3"}
+[2026-01-21T18:56:51.800] [INFO] info - post params: {}
+[2026-01-21T18:57:17.951] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"3"}
+[2026-01-21T18:57:17.952] [INFO] info - post params: {}
+[2026-01-21T18:58:08.891] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"10"}
+[2026-01-21T18:58:08.891] [INFO] info - post params: {}
+[2026-01-21T18:58:38.346] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"3"}
+[2026-01-21T18:58:38.346] [INFO] info - post params: {}
+[2026-01-21T18:59:28.132] [INFO] info - ***数据库连接成功***
+[2026-01-21T18:59:33.403] [INFO] info - ***数据库连接成功***
+[2026-01-21T18:59:44.937] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"3"}
+[2026-01-21T18:59:44.938] [INFO] info - post params: {}
+[2026-01-21T18:59:57.163] [INFO] info - ***数据库连接成功***
+[2026-01-21T19:00:07.769] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"10"}
+[2026-01-21T19:00:07.770] [INFO] info - post params: {}
+[2026-01-21T19:00:11.664] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"10"}
+[2026-01-21T19:00:11.665] [INFO] info - post params: {}
+[2026-01-21T19:00:19.368] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"3"}
+[2026-01-21T19:00:19.368] [INFO] info - post params: {}
+[2026-01-21T19:01:05.718] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"10"}
+[2026-01-21T19:01:05.718] [INFO] info - post params: {}
+[2026-01-21T19:01:13.098] [INFO] info - get params: {}
+[2026-01-21T19:01:13.099] [INFO] info - post params: {"userName":"admin","userEmail":"ting@gmail.com@gmail.com","mobile":"17611020000","job":"前端架构师","state":1,"roleList":["60180b07b1eaed6c45fbebdb","60150cb764de99631b2c3cd3","60180b59b1eaed6c45fbebdc"],"deptId":["60167059c9027b7d2c520a61","60167345c6a4417f2d27506f"],"role":"1","userId":1000002,"createTime":"2021-01-17T13:32:06.381Z","lastLoginTime":"2021-01-17T13:32:06.381Z","__v":0,"action":"edit"}
+[2026-01-21T19:01:13.141] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"3"}
+[2026-01-21T19:01:13.142] [INFO] info - post params: {}
+[2026-01-21T19:01:33.742] [INFO] info - get params: {}
+[2026-01-21T19:01:33.742] [INFO] info - post params: {"userName":"user","userEmail":"user@gmail.com@gmail.com","mobile":"17611028882","job":"后端架构师","state":3,"roleList":["60180b07b1eaed6c45fbebdb","60150cb764de99631b2c3cd3","60180b59b1eaed6c45fbebdc"],"deptId":["60167059c9027b7d2c520a61","6016735ac6a4417f2d275071"],"role":"0","userId":1000003,"createTime":"2021-01-17T13:32:06.381Z","lastLoginTime":"2021-01-17T13:32:06.381Z","__v":0,"action":"edit"}
+[2026-01-21T19:01:33.781] [INFO] info - get params: {"userId":"","userName":"","state":"0","pageNum":"1","pageSize":"10","total":"3"}
+[2026-01-21T19:01:33.782] [INFO] info - post params: {}

@@ -296,11 +296,15 @@ export default {
           let res = await proxy.$api.userSubmit(params)
           if (res) {
             showModel.value = false
-            proxy.$message.success('新增用户成功')
-            dialogForm.value.resetFields()
-            getUserList()
-          } else {
-            proxy.$message.error(res.msg)
+            if (action.value === 'add') {
+              proxy.$message.success('新增用户成功')
+              dialogForm.value.resetFields()
+              getUserList()
+            } else {
+              proxy.$message.success('编辑用户成功')
+              dialogForm.value.resetFields()
+              getUserList()
+            }
           }
         }
       })
@@ -320,6 +324,7 @@ export default {
       action.value = 'edit'
       showModel.value = true
       proxy.$nextTick(() => {
+        row.state = Number(row.state)
         Object.assign(userForm, row)
       })
       
