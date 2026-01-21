@@ -39,8 +39,15 @@ service.interceptors.response.use(
       }, 1500)
       return Promise.reject(TOKEN_ERROR)
     } else {
-      // 显示后端返回的错误信息：优先使用 data（字符串类型），其次使用 msg
-      const errorMsg = (typeof data === 'string' && data) || msg || NETWORK_ERROR
+      // 显示后端返回的错误信息：优先使用 data（字符串类型），其次使用 msg，最后使用默认错误信息
+      let errorMsg = ''
+      if (typeof data === 'string' && data.trim()) {
+        errorMsg = data
+      } else if (msg && msg.trim()) {
+        errorMsg = msg
+      } else {
+        errorMsg = NETWORK_ERROR
+      }
       ElMessage.error(errorMsg)
       return Promise.reject(errorMsg)
     }
@@ -51,8 +58,17 @@ service.interceptors.response.use(
       // 服务器返回了响应，但状态码不在 2xx 范围内
       const responseData = error.response.data || {}
       const { code, data, msg } = responseData
-      // 优先使用 data（字符串类型），其次使用 msg
-      const errorMsg = (typeof data === 'string' && data) || msg || NETWORK_ERROR
+      // 优先使用 data（字符串类型），其次使用 msg，最后使用默认错误信息
+      let errorMsg = ''
+      if (typeof data === 'string' && data.trim()) {
+        errorMsg = data
+      } else if (msg && msg.trim()) {
+        errorMsg = msg
+      } else if (error.response.status) {
+        errorMsg = `请求失败，状态码：${error.response.status}`
+      } else {
+        errorMsg = NETWORK_ERROR
+      }
       ElMessage.error(errorMsg)
       return Promise.reject(errorMsg)
     } else if (error.request) {

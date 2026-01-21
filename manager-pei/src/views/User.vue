@@ -232,12 +232,17 @@ export default {
     }
     // 用户单个删除
     const handleDelete = async (row) => {
-      const res = await proxy.$api.userDelete({ userIds: [row.userId] })
-      if (res.nModified > 0) {
-        proxy.$message.success('删除成功')
-        getUserList()
-      } else {
-        proxy.$message.error('删除失败')
+      try {
+        const res = await proxy.$api.userDelete({ userIds: [row.userId] })
+        if (res && res.modifiedCount > 0) {
+          proxy.$message.success('删除成功')
+          getUserList()
+        } else {
+          proxy.$message.error('删除失败')
+        }
+      } catch (error) {
+        // 错误信息已在 request.js 中显示，这里不需要重复显示
+        console.error('删除用户失败:', error)
       }
     }
     // 用户批量删除
@@ -247,12 +252,17 @@ export default {
         proxy.$message.warning('请选择要删除的用户')
         return
       }
-      const res = await proxy.$api.userDelete({ userIds: checkedUsersIds.value })
-      if (res.nModified > 0) {
-        proxy.$message.success('删除成功')
-        getUserList()
-      } else {
-        proxy.$message.error('删除失败')
+      try {
+        const res = await proxy.$api.userDelete({ userIds: checkedUsersIds.value })
+        if (res && res.modifiedCount > 0) {
+          proxy.$message.success('删除成功')
+          getUserList()
+        } else {
+          proxy.$message.error('删除失败')
+        }
+      } catch (error) {
+        // 错误信息已在 request.js 中显示，这里不需要重复显示
+        console.error('批量删除用户失败:', error)
       }
     }
     // 选择用户

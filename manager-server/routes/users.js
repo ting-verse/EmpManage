@@ -4,6 +4,7 @@ const utils = require('../utils/util.js')
 const jwt = require('jsonwebtoken')
 router.prefix('/users')
 
+// 用户登录
 router.post('/login', async ctx => {
   try {
     const { userName, userPwd } = ctx.request.body
@@ -21,6 +22,7 @@ router.post('/login', async ctx => {
   }
 })
 
+// 用户列表
 router.get('/list', async (ctx) => {
   const { userId, userName, state } = ctx.request.query
   const { page, skipIndex } = utils.pager(ctx.request.query)
@@ -54,4 +56,18 @@ router.get('/list', async (ctx) => {
   }
 })
 
+// 用户删除
+router.post('/delete', async (ctx) => {
+  const { userIds } = ctx.request.body
+  try {
+    const res = await User.updateMany({ userId: { $in: userIds } }, { state: 2 })
+    if (res.modifiedCount > 0) {
+      ctx.body = utils.success(res, `共删除${res.modifiedCount}个用户`)
+    } else {
+      ctx.body = utils.fail('删除失败')
+    }
+  } catch (error) {
+    ctx.body = utils.fail('删除失败')
+  }
+})
 module.exports = router
