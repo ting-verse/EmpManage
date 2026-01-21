@@ -45,8 +45,8 @@
       <el-pagination layout="prev, pager, next" :total="pager.total" @current-change="handleCurrentChange"
         class="pagination" />
     </div>
-    <el-dialog title="新增用户" v-model="showModel">
-      <el-form :model="userForm" :rules="rules" ref="dialogForm" label-width="100px">
+    <el-dialog title="新增用户" v-model="showModel" :before-close="handleCancel">
+      <el-form :model="userForm" :rules="rules" ref="dialogForm" label-width="100px" >
         <el-form-item label="用户名" prop="userName">
           <el-input v-model="userForm.userName" placeholder="请输入用户名" :disabled="action === 'edit'" />
         </el-form-item>
@@ -327,7 +327,11 @@ export default {
         row.state = Number(row.state)
         Object.assign(userForm, row)
       })
-      
+    }
+    // 关闭弹窗
+    const handleClose = () => {
+      showModel.value = false
+      dialogForm.value.resetFields()
     }
 
     // 组件挂载
@@ -361,7 +365,8 @@ export default {
       handleSubmit,
       handleCancel,
       getRoleList,
-      handleEdit
+      handleEdit,
+      handleClose
     }
   }
 }

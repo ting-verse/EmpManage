@@ -3,7 +3,7 @@ const User = require('../models/userSchema')
 const Counter = require('../models/counterSchema')
 const utils = require('../utils/util.js')
 const jwt = require('jsonwebtoken')
-const md5 = require('md5')
+// const md5 = require('md5')
 router.prefix('/users')
 
 // 用户登录
@@ -11,9 +11,10 @@ router.post('/login', async ctx => {
   try {
     const { userName, userPwd } = ctx.request.body
     const res = await User.findOne({ userName, userPwd }, 'userId userName userEmail state role deptId roleList')
-    const data = res._doc
-    const token = jwt.sign({ data: 'footbar' }, 'ting', { expiresIn: '1h' })
+
     if (res) {
+      const data = res._doc
+      const token = jwt.sign({ data: 'footbar' }, 'ting', { expiresIn: '1h' })
       data.token = token
       ctx.body = utils.success(data)
     } else {
@@ -92,7 +93,7 @@ router.post('/operate', async (ctx) => {
         const user = new User({
           userId: doc.sequence_value,
           userName,
-          userPwd: md5('123456'),
+          userPwd: '123456',
           userEmail,
           role: 1,
           roleList,

@@ -1,7 +1,7 @@
 <script>
 import { Setting, Document, Fold, Bell, ArrowDown } from '@element-plus/icons-vue'
 import TreeMenu from './TreeMenu.vue'
-import BreadCrumb from './BreadCrumb.vue'
+import BreadCrumb from './Breadcrumb.vue'
 export default {
   name: 'Home',
   components: {
