@@ -71,13 +71,14 @@
           </el-select>
         </el-form-item>
         <el-form-item label="系统角色" prop="roleList" placeholder="请选择系统角色">
-          <el-select v-model="userForm.roleList">
-            <el-option></el-option>
+          <el-select v-model="userForm.roleList" multiple>
+            <el-option v-for="role in roleList" :key="role._id" :value="role._id" :label="role.roleName">
+            </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="部门" prop="deptId">
-          <el-cascader v-model="userForm.deptId" :options="[]"
-            :props="{ checkStrictly: true, value: '_id', lable: 'depName' }" clearable placeholder="请选择部门" />
+          <el-cascader v-model="userForm.deptId" :options="deptList"
+            :props="{ checkStrictly: true, value: '_id', label: 'deptName' }" clearable placeholder="请选择部门" />
         </el-form-item>
       </el-form>
       <template #footer>
@@ -91,7 +92,7 @@
 </template>
 
 <script>
-import { reactive, ref, onMounted, getCurrentInstance } from 'vue'
+import { reactive, ref, onMounted, getCurrentInstance, toRaw } from 'vue'
 export default {
   name: 'User',
   setup() {
@@ -153,6 +154,13 @@ export default {
     ])
     // 新增用户表单
     const userForm = reactive({
+      userName: '',
+      userEmail: '',
+      mobile: '',
+      job: '',
+      state: 1,
+      roleList: [],
+      deptId: []
     })
     // 分页配置
     const pager = reactive({
@@ -191,7 +199,7 @@ export default {
         }
       ],
     })
-    
+
     // 获取用户列表
     const getUserList = async () => {
       let params = { ...user, ...pager }
@@ -203,9 +211,11 @@ export default {
     const handleQuery = () => {
       getUserList()
     }
-    // 重置
+    // 重置查询表单
+    // 说明：这个方法用于重置查询表单
+    // 在 Vue 3 Composition API 中，ref 对象通过 .value 访问，不需要使用 proxy.$refs
     const handleReset = () => {
-      form.value.resetFields()
+      form.value.resetFields()  // form 是 ref 对象，通过 .value 访问表单实例
       getUserList()
     }
     // 分页
@@ -250,9 +260,49 @@ export default {
     const handleCreate = () => {
       showModel.value = true
     }
+    // 获取角色列表
+    const roleList = ref([])
+    const getRoleList = async () => {
+      const res = await proxy.$api.getRoleList()
+      roleList.value = res
+    }
+    // 获取部门列表
+    const deptList = ref([])
+    const getDeptList = async () => {
+      const res = await proxy.$api.getDeptList()
+      deptList.value = res
+    }
+    // 提交表单（带验证）
+    const action = ref('add')
+    const handleSubmit = () => {
+      dialogForm.value.validate(async (valid) => {
+        if (valid) {
+          let params = toRaw(userForm)
+          params.userEmail += '@gmail.com'
+          params.action = action.value
+          let res = await proxy.$api.userSubmit(params)
+          if (res) {
+            showModel.value = false
+            proxy.$message.success('新增用户成功')
+            dialogForm.value.resetFields()
+            getUserList()
+          } else {
+            proxy.$message.error(res.msg)
+          }
+        }
+      })
+    }
+    // 取消新增用户
+    const handleCancel = () => {
+      showModel.value = false
+      dialogForm.value.resetFields()
+    }
+
     // 组件挂载
     onMounted(() => {
       getUserList()
+      getRoleList()
+      getDeptList()
     })
 
     return {
@@ -266,13 +316,19 @@ export default {
       checkedUsersIds,
       userForm,
       rules,
+      roleList,
+      deptList,
+      action,
       handleQuery,
       handleReset,
       handleCurrentChange,
       handleDelete,
       handlePatchDelete,
       handleSelectionChange,
-      handleCreate
+      handleCreate,
+      handleSubmit,
+      handleCancel,
+      getRoleList
     }
   }
 }
