@@ -10,7 +10,7 @@ const CODE = {
 
 module.exports = {
   CODE,
-  paper (pageNum = 1, pageSize = 10) {
+  pager ({pageNum = 1, pageSize = 10}) {
     pageNum = pageNum * 1
     pageSize = pageSize * 1
     const skipIndex = (pageNum - 1) * pageSize

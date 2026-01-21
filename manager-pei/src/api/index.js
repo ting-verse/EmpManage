@@ -6,6 +6,7 @@ export default {
       url:'/users/login',
       method:'post',
       data:params,
+      mock:false
     })
   },
   noticeCount() {
@@ -29,7 +30,7 @@ export default {
       url:'/users/list',
       method:'get',
       data:params,
-      mock:true
+      mock:false
     })
   },
   userDelete(params) {
