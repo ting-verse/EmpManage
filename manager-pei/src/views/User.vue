@@ -104,7 +104,7 @@ export default {
     const user = reactive({
       userId: '',
       userName: '',
-      state: 0,
+      state: 1,
     })
     const showModel = ref(false)
     // 用户列表

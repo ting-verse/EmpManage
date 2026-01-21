@@ -1,7 +1,9 @@
 const router = require('koa-router')()
 const User = require('../models/userSchema')
+const Counter = require('../models/counterSchema')
 const utils = require('../utils/util.js')
 const jwt = require('jsonwebtoken')
+const md5 = require('md5')
 router.prefix('/users')
 
 // 用户登录
@@ -79,18 +81,45 @@ router.post('/operate', async (ctx) => {
       ctx.body = utils.fail('参数错误', utils.CODE.PARAM_ERROR)
       return
     }
+    // 新增用户
+    const res = await User.findOne({ $or: [{ userName }, { userEmail }] }, '_id userName userEmail')
+    if (res) {
+      ctx.body = utils.fail('用户名或邮箱已存在')
+      return
+    } else {
+      try {
+        const doc = await Counter.findByIdAndUpdate({ _id: 'userId' }, { $inc: { sequence_value: 1 } })
+        const user = new User({
+          userId: doc.sequence_value,
+          userName,
+          userPwd: md5('123456'),
+          userEmail,
+          role: 1,
+          roleList,
+          state,
+          job,
+          mobile,
+          deptId,
+        })
+        user.save()
+        ctx.body = utils.success({}, "用户创建成功")
+      } catch (error) {
+        ctx.fail(error, stack, '用户创建失败')
+      }
+    }
   } else if (action === "edit") {
     if (!deptId) {
       ctx.body = utils.fail('部门不能为空', utils.CODE.PARAM_ERROR)
       return
     }
+    try {
+      const res = await User.findOneAndUpdate({ userId }, { mobile, job, state, roleList, deptId }, { new: true })
+      ctx.body = utils.success(res, "更新成功")
+    }
+    catch (error) {
+      ctx.body = utils.fail('更新失败')
+    }
   }
-  try {
-    const res = await User.findOneAndUpdate({ userId }, { mobile, job, state, roleList, deptId }, { new: true })
-    ctx.body = utils.success(res, "更新成功")
-  }
-  catch (error) {
-    ctx.body = utils.fail('更新失败')
-  }
+
 })
 module.exports = router
