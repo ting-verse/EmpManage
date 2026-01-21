@@ -93,6 +93,7 @@
 
 <script>
 import { reactive, ref, onMounted, getCurrentInstance, toRaw } from 'vue'
+import { formateDate } from '../utils/utils'
 export default {
   name: 'User',
   setup() {
@@ -145,11 +146,17 @@ export default {
       },
       {
         label: '用户创建时间',
-        prop: 'createTime'
+        prop: 'createTime',
+        formatter: (row, column, value) => {
+          return formateDate(value)
+        }
       },
       {
         label: '最后登录时间',
-        prop: 'lastLoginTime'
+        prop: 'lastLoginTime',
+        formatter: (row, column, value) => {
+          return formateDate(value)
+        }
       }
     ])
     // 新增用户表单
