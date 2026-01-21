@@ -33,7 +33,7 @@
           :width="item.width" :formatter="item.formatter" />
         <el-table-column label="操作" width="150">
           <template #default="scope">
-            <el-button type="primary" size="mini">
+            <el-button type="primary" size="mini" @click="handleEdit(scope.row)">
               编辑
             </el-button>
             <el-button type="danger" size="mini" @click="handleDelete(scope.row)">
@@ -48,10 +48,10 @@
     <el-dialog title="新增用户" v-model="showModel">
       <el-form :model="userForm" :rules="rules" ref="dialogForm" label-width="100px">
         <el-form-item label="用户名" prop="userName">
-          <el-input v-model="userForm.userName" placeholder="请输入用户名" />
+          <el-input v-model="userForm.userName" placeholder="请输入用户名" :disabled="action === 'edit'" />
         </el-form-item>
         <el-form-item label="用户邮箱" prop="userEmail">
-          <el-input v-model="userForm.userEmail" placeholder="请输入用户邮箱">
+          <el-input v-model="userForm.userEmail" placeholder="请输入用户邮箱" :disabled="action === 'edit'">
             <template #append>
               @gmail.com
             </template>
@@ -256,10 +256,6 @@ export default {
       })
       checkedUsersIds.value = arr
     }
-    // 新增用户
-    const handleCreate = () => {
-      showModel.value = true
-    }
     // 获取角色列表
     const roleList = ref([])
     const getRoleList = async () => {
@@ -297,6 +293,20 @@ export default {
       showModel.value = false
       dialogForm.value.resetFields()
     }
+    // 新增用户
+    const handleCreate = () => {
+      action.value = 'add'
+      showModel.value = true
+    }
+    // 编辑用户
+    const handleEdit = (row) => {
+      action.value = 'edit'
+      showModel.value = true
+      proxy.$nextTick(() => {
+        Object.assign(userForm, row)
+      })
+      
+    }
 
     // 组件挂载
     onMounted(() => {
@@ -328,7 +338,8 @@ export default {
       handleCreate,
       handleSubmit,
       handleCancel,
-      getRoleList
+      getRoleList,
+      handleEdit
     }
   }
 }
