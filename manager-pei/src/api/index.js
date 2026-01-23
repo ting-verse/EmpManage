@@ -70,5 +70,13 @@ export default {
       data:params,
       // mock:true
     })
+  },
+  roleList() {
+    return request({
+      url:'/roles/list',
+      method:'get',
+      // data: params,
+      mock:true
+    })
   }
 }
