@@ -29,10 +29,10 @@
             <el-button type="primary" size="mini" @click="handleAdd(2,scope.row)">
               新增
             </el-button>
-            <el-button type="primary" size="mini" @click="handleEdit(scope.row)">
+            <el-button size="mini" @click="handleEdit(scope.row)">
               编辑
             </el-button>
-            <el-button type="danger" size="mini" @click="handleDelete(scope.row)">
+            <el-button type="danger" size="mini" @click="handleDelete(scope.row._id)">
               删除
             </el-button>
           </template>
@@ -178,10 +178,16 @@ export default {
       }
     },
     handleEdit(row) {
-      console.log(row)
+      this.showModel = true
+      this.action = 'edit'
+      this.$nextTick(() => {
+        Object.assign(this.menuForm, row)
+      })
     },
-    handleDelete(row) {
-      console.log(row)
+    async handleDelete(id) {
+      await this.$api.menuSubmit({_id: id, action: 'delete'})
+      this.$message.success('删除成功')
+      this.getMenuList()
     },
     handleCancelDialog() {
       this.showModel = false
