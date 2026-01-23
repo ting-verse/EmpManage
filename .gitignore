@@ -1,0 +1,33 @@
+# Logs
+manager-server/logs/
+*.log
+
+# Dependencies
+node_modules/
+manager-pei/node_modules/
+manager-server/node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+manager-pei/dist/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+Thumbs.db
+.DS_Store
