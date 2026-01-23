@@ -6,7 +6,7 @@ export default {
       url:'/users/login',
       method:'post',
       data:params,
-      mock:false
+      // mock:true
     })
   },
   noticeCount() {
@@ -22,7 +22,7 @@ export default {
       url:'/menu/list',
       method:'get',
       data:{},
-      mock:true
+      // mock:true
     })
   },
   userList(params) {
@@ -30,7 +30,7 @@ export default {
       url:'/users/list',
       method:'get',
       data:params,
-      mock:false
+      // mock:true
     })
   },
   userDelete(params) {
@@ -38,7 +38,7 @@ export default {
       url:'/users/delete',
       method:'post',
       data:params,
-      mock:false
+      // mock:true
     })
   },
   getRoleList() {
@@ -60,7 +60,7 @@ export default {
       url:'/users/operate',
       method:'post',
       data:params,
-      mock:false
+      // mock:true
     })
   },
   menuSubmit(params) {
@@ -68,7 +68,7 @@ export default {
       url:'/menu/operate',
       method:'post',
       data:params,
-      mock:true
+      // mock:true
     })
   }
 }

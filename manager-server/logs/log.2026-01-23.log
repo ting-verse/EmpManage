@@ -1,0 +1,56 @@
+[2026-01-23T14:47:07.860] [ERROR] error - 错误信息: Cannot read properties of null (reading 'slice')
+错误堆栈: TypeError: Cannot read properties of null (reading 'slice')
+    at getTreeMenu (D:\myproject\EmpManage\manager-server\routes\menus.js:22:30)
+    at D:\myproject\EmpManage\manager-server\routes\menus.js:14:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async D:\myproject\EmpManage\manager-server\app.js:35:3
+    at async serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:9)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)
+[2026-01-23T14:47:07.873] [ERROR] error - 错误信息: Cannot read properties of null (reading 'slice')
+错误堆栈: TypeError: Cannot read properties of null (reading 'slice')
+    at getTreeMenu (D:\myproject\EmpManage\manager-server\routes\menus.js:22:30)
+    at D:\myproject\EmpManage\manager-server\routes\menus.js:14:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async D:\myproject\EmpManage\manager-server\app.js:35:3
+    at async serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:9)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)
+[2026-01-23T14:47:09.638] [ERROR] error - 错误信息: Cannot read properties of null (reading 'slice')
+错误堆栈: TypeError: Cannot read properties of null (reading 'slice')
+    at getTreeMenu (D:\myproject\EmpManage\manager-server\routes\menus.js:22:30)
+    at D:\myproject\EmpManage\manager-server\routes\menus.js:14:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async D:\myproject\EmpManage\manager-server\app.js:35:3
+    at async serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:9)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)
+[2026-01-23T14:47:09.651] [ERROR] error - 错误信息: Cannot read properties of null (reading 'slice')
+错误堆栈: TypeError: Cannot read properties of null (reading 'slice')
+    at getTreeMenu (D:\myproject\EmpManage\manager-server\routes\menus.js:22:30)
+    at D:\myproject\EmpManage\manager-server\routes\menus.js:14:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async D:\myproject\EmpManage\manager-server\app.js:35:3
+    at async serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:9)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)
+[2026-01-23T14:47:10.481] [ERROR] error - 错误信息: Cannot read properties of null (reading 'slice')
+错误堆栈: TypeError: Cannot read properties of null (reading 'slice')
+    at getTreeMenu (D:\myproject\EmpManage\manager-server\routes\menus.js:22:30)
+    at D:\myproject\EmpManage\manager-server\routes\menus.js:14:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async D:\myproject\EmpManage\manager-server\app.js:35:3
+    at async serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:9)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)
+[2026-01-23T14:47:10.494] [ERROR] error - 错误信息: Cannot read properties of null (reading 'slice')
+错误堆栈: TypeError: Cannot read properties of null (reading 'slice')
+    at getTreeMenu (D:\myproject\EmpManage\manager-server\routes\menus.js:22:30)
+    at D:\myproject\EmpManage\manager-server\routes\menus.js:14:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async D:\myproject\EmpManage\manager-server\app.js:35:3
+    at async serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:9)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)
+[2026-01-23T14:47:22.669] [ERROR] error - 错误信息: Cannot read properties of null (reading 'slice')
+错误堆栈: TypeError: Cannot read properties of null (reading 'slice')
+    at getTreeMenu (D:\myproject\EmpManage\manager-server\routes\menus.js:22:30)
+    at D:\myproject\EmpManage\manager-server\routes\menus.js:14:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async D:\myproject\EmpManage\manager-server\app.js:35:3
+    at async serve (D:\myproject\EmpManage\manager-server\node_modules\koa-static\index.js:53:9)
+    at async bodyParser (D:\myproject\EmpManage\manager-server\node_modules\koa-bodyparser\index.js:78:5)

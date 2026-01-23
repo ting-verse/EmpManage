@@ -5,6 +5,7 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const users = require('./routes/users')
+const menus = require('./routes/menus')
 const log4js = require('./utils/log4j')
 const utils = require('./utils/util')
 const router = require('koa-router')()
@@ -52,6 +53,7 @@ router.prefix('/api')
 //   // 拿到前端携带过来的 token 进行验证
 // })
 router.use(users.routes(), users.allowedMethods())
+router.use(menus.routes(), menus.allowedMethods())
 // routes
 app.use(router.routes(), router.allowedMethods())
 
