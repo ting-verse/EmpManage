@@ -81,9 +81,7 @@ export default {
       showPermission: false,
       curRoleName: '',
       curRoleId: '',
-      queryForm: {
-        roleName: ''
-      },
+      queryForm: {},
       roleForm: {
         roleName: '',
         remark: ''
@@ -137,7 +135,7 @@ export default {
   },
   methods: {
     async getRoleList() {
-      const { list, page } = await this.$api.roleList(this.queryForm)
+      const { list, page } = await this.$api.roleList({...this.queryForm, ...this.pager})
       this.roleList = list
       this.page = page
     },
