@@ -7,7 +7,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary">查询</el-button>
-          <el-button  @click="handleReset('queryForm')">重置</el-button>
+          <el-button @click="handleReset('queryForm')">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -35,7 +35,10 @@
           <el-input v-model="deptForm.deptName" placeholder="请输入部门名称"></el-input>
         </el-form-item>
         <el-form-item label="负责人" prop="userName">
-          <el-select v-model="deptForm.userName" placeholder="请选择部门负责人">
+          <!-- el-option 的 value：每个选项的实际值
+               el-select 的 v-model：选中的值
+               选择时：被选中的 el-option 的 value 会赋值给 v-model 绑定的变量-->
+          <el-select v-model="deptForm.userName" placeholder="请选择部门负责人" @change="handleChangeUserName">
             <el-option v-for="item in userList" :key="item.userId" :label="item.userName"
               :value="`${item.userId}/${item.userName}/${item.userEmail}`"></el-option>
           </el-select>
@@ -94,7 +97,17 @@ export default {
         userName: '',
         userEmail: ''
       },
-      rules: {}
+      rules: {
+        parentId: [
+          { required: true, message: '请选择上级部门', trigger: 'blur' }
+        ],
+        deptName: [
+          { required: true, message: '请输入部门名称', trigger: 'blur' }
+        ],
+        userName: [
+          { required: true, message: '请选择部门负责人', trigger: 'blur' }
+        ]
+      }
     }
   },
   methods: {
@@ -109,7 +122,7 @@ export default {
     handleReset(form) {
       this.$refs[form].resetFields()
     },
-    handleClose(){
+    handleClose() {
       this.handleReset('deptForm')
       this.showDialog = false
     },
@@ -120,12 +133,44 @@ export default {
     handleEdit(row) {
       this.action = "edit"
       this.showDialog = true
+      this.$nextTick(() => {
+        Object.assign(this.deptForm, {
+          userName: `${row.userId}/${row.userName}/${row.userEmail}`
+        })
+      })
     },
-    handleDelete(_id) {
+    async handleDelete(_id) {
       this.action = "delete"
+      let res = await this.$api.deptOperate({ action: this.action, _id })
+      if (res) {
+        this.getDeptList()
+        this.$message.success('删除成功')
+      }
+      else {
+        this.$message.error(res.msg)
+      }
     },
     handleSubmit() {
-      this.showDialog = false
+      this.$refs.deptForm.validate(async (valid) => {
+        if (valid) {
+          let params = { ...this.deptForm }
+          delete params.userEmail
+          let res = await this.$api.deptOperate(params)
+          if (res) {
+            this.handleClose()
+            this.getDeptList()
+            this.$message.success('操作成功')
+          }
+          else {
+            this.$message.error(res.msg)
+          }
+        }
+      })
+    },
+    handleChangeUserName(value) {
+      console.log(value)
+      const [userId, userName, userEmail] = value.split('/')
+      Object.assign(this.deptForm, { userId, userName, userEmail })
     }
   },
   mounted() {
