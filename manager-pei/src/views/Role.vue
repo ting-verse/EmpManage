@@ -23,7 +23,7 @@
             <el-button type="primary" size="mini" @click="handleEdit(scope.row)">
               编辑
             </el-button>
-            <el-button size="mini">
+            <el-button size="mini" @click="handlePermission(scope.row)">
               设置权限
             </el-button>
             <el-button type="danger" size="mini" @click="handleDelete(scope.row._id)">
@@ -51,6 +51,23 @@
         </span>
       </template>
     </el-dialog>
+    <el-dialog title="设置权限" v-model="showPermission" :before-close="handlePermissionCancelDialog">
+      <el-form label-width="100px">
+        <el-form-item label="角色名称" prop="roleName">
+          {{ curRoleName }}
+        </el-form-item>
+        <el-form-item label="选择权限" prop="remark">
+          <el-tree ref="permissionTree" style="max-width: 600px" :data="menuList" :props="{ label: 'menuName' }"
+            node-key="_id" show-checkbox default-expand-all />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="showPermission = false">取 消</el-button>
+          <el-button type="primary" @click="handlePermissionSubmit">确 定</el-button>
+        </span>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -61,6 +78,9 @@ export default {
   data() {
     return {
       showModel: false,
+      showPermission: false,
+      curRoleName: '',
+      curRoleId: '',
       queryForm: {
         roleName: ''
       },
@@ -69,6 +89,7 @@ export default {
         remark: ''
       },
       roleList: [],
+      menuList: [],
       rules: {
         roleName: [
           { required: true, message: '请输入角色名称', trigger: 'blur' }
@@ -120,7 +141,7 @@ export default {
       })
     },
     async handleDelete(_id) {
-      let res = await this.$api.roleOperate({_id, action: 'delete'})
+      let res = await this.$api.roleOperate({ _id, action: 'delete' })
       if (res) {
         this.$message.success('删除成功！')
         this.getRoleList()
@@ -129,8 +150,8 @@ export default {
     handleSubmit() {
       this.$refs.dialogForm.validate(async (valid) => {
         if (valid) {
-          let {roleForm, action} = this
-          let params = {...roleForm, action}
+          let { roleForm, action } = this
+          let params = { ...roleForm, action }
           let res = await this.$api.roleOperate(params)
           if (res) {
             this.showModel = false
@@ -141,20 +162,62 @@ export default {
         }
       })
     },
-    handleReset(form){
+    handleReset(form) {
       this.$refs[form].resetFields()
     },
-    handleClose(){
+    handleClose() {
       this.showModel = false
       this.handleReset('dialogForm')
     },
-    handleCloseDialog(){
+    handleCloseDialog() {
       this.showModel = false
       this.handleReset('dialogForm')
+    },
+    handlePermissionCancelDialog() {
+      this.showPermission = false
+    },
+    handlePermission(row) {
+      this.showPermission = true
+      this.curRoleName = row.roleName
+      this.curRoleId = row._id
+      const { checkedKeys } = row.permissionList
+      setTimeout(() => {
+        this.$refs.permissionTree.setCheckedKeys(checkedKeys)
+      })
+    },
+    async getMenuList() {
+      const res = await this.$api.menuList()
+      this.menuList = res
+    },
+    async handlePermissionSubmit() {
+      let nodes = this.$refs.permissionTree.getCheckedNodes();
+      let halfKeys = this.$refs.permissionTree.getHalfCheckedKeys();
+      let checkedKeys = [];
+      let parentKeys = [];
+      nodes.map((node) => {
+        if (!node.children) {
+          checkedKeys.push(node._id);
+        } else {
+          parentKeys.push(node._id);
+        }
+      });
+      let params = {
+        _id: this.curRoleId,
+        permissionList: {
+          checkedKeys,
+          halfCheckedKeys: parentKeys.concat(halfKeys),
+        },
+      };
+      await this.$api.updatePermission(params);
+      this.showPermission = false;
+      this.$message.success("设置成功");
+      this.getRoleList();
+
     }
   },
   mounted() {
     this.getRoleList()
+    this.getMenuList()
   }
 }
 </script>
