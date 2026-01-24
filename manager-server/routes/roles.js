@@ -1,5 +1,5 @@
 /**
- * 用户管理模块
+ * 角色管理模块
  */
 
 const router = require('koa-router')()
@@ -48,29 +48,51 @@ router.post('/operate', async ctx => {
   const { _id, roleName, remark, action } = ctx.request.body
   let res, info
   try {
-    if (action === 'create') {
+    if (action === 'add') {
       res = await Role.create({ roleName, remark })
       info = '新增成功'
-    } else if (action === 'update') {
+    } else if (action === 'edit') {
       if (_id) {
         let params = { roleName, remark }
-        params.update = new Date()
-        res = await Role.findByIdAndUpdate( _id , params)
+        params.updateTime = new Date()
+        res = await Role.findByIdAndUpdate(_id, params, { new: true })
         info = '更新成功'
       } else {
         ctx.body = utils.fail(`缺少参数params:${_id}`)
+        return
       }
-    } else {
+    } else if (action === 'delete') {
       if (_id) {
-        res = await Role.findByIdAndDelete( _id )
+        res = await Role.findByIdAndDelete(_id)
         info = '删除成功'
       } else {
         ctx.body = utils.fail(`删除失败,缺少参数params:${_id}`)
+        return
       }
+    } else {
+      ctx.body = utils.fail(`未知操作类型:${action}`)
+      return
     }
     ctx.body = utils.success(res, info)
   } catch (error) {
     ctx.body = utils.fail(`操作失败${error.stack}`)
+  }
+})
+
+// 更新角色权限
+router.post('/update/permission', async ctx => {
+  const { _id, permissionList } = ctx.request.body
+  try {
+    if (!_id) {
+      ctx.body = utils.fail('缺少角色ID')
+      return
+    }
+    let params = { permissionList }
+    params.updateTime = new Date()
+    const res = await Role.findByIdAndUpdate(_id, params, { new: true })
+    ctx.body = utils.success(res, '权限设置成功')
+  } catch (error) {
+    ctx.body = utils.fail(`权限设置失败:${error.stack}`)
   }
 })
 

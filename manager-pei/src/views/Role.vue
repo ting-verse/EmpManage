@@ -6,8 +6,8 @@
           <el-input v-model="queryForm.roleName" placeholder="请输入角色名称"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary">查询</el-button>
-          <el-button>重置</el-button>
+          <el-button type="primary" @click="handleQuery">查询</el-button>
+          <el-button @click="handleReset">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -32,7 +32,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <el-pagination layout="prev, pager, next" :total="pager.total" @current-change="handleCurrentChange"
+      <el-pagination layout="prev, pager, next" :total="pager.total" :current-page="pager.pageNum" @current-change="handleCurrentChange"
         class="pagination" />
     </div>
     <el-dialog title="角色新增" v-model="showModel" :before-close="handleCancelDialog">
@@ -95,8 +95,8 @@ export default {
       },
       pager: {
         total: 0,
-        page: 1,
-        pageSize: 10
+        pageNum: 1,
+        pageSize: 12
       },
       columns: [
         {
@@ -137,17 +137,31 @@ export default {
     async getRoleList() {
       const { list, page } = await this.$api.roleList({...this.queryForm, ...this.pager})
       this.roleList = list
-      this.page = page
+      if (page) {
+        this.pager.total = page.total
+        this.pager.pageNum = page.pageNum
+      }
     },
     handleAdd() {
       this.showModel = true
       this.action = 'add'
+      // 重置表单数据
+      this.roleForm = {
+        roleName: '',
+        remark: ''
+      }
+      // 清除表单验证状态
+      this.$nextTick(() => {
+        if (this.$refs.dialogForm) {
+          this.$refs.dialogForm.clearValidate()
+        }
+      })
     },
     handleEdit(row) {
       this.showModel = true
       this.action = 'edit'
       this.$nextTick(() => {
-        this.roleForm = row
+        this.roleForm = {_id: row._id, roleName: row.roleName, remark: row.remark}
       })
     },
     async handleDelete(_id) {
@@ -165,8 +179,13 @@ export default {
           let res = await this.$api.roleOperate(params)
           if (res) {
             this.showModel = false
-            this.$message.success('创建成功！')
+            this.$message.success(action === 'add' ? '创建成功！' : '更新成功！')
             this.getRoleList()
+            // 重置表单数据
+            this.roleForm = {
+              roleName: '',
+              remark: ''
+            }
             this.handleReset('dialogForm')
           }
         }
@@ -177,10 +196,29 @@ export default {
     },
     handleClose() {
       this.showModel = false
+      // 重置表单数据
+      this.roleForm = {
+        roleName: '',
+        remark: ''
+      }
       this.handleReset('dialogForm')
     },
     handleCloseDialog() {
       this.showModel = false
+      // 重置表单数据
+      this.roleForm = {
+        roleName: '',
+        remark: ''
+      }
+      this.handleReset('dialogForm')
+    },
+    handleCancelDialog() {
+      this.showModel = false
+      // 重置表单数据
+      this.roleForm = {
+        roleName: '',
+        remark: ''
+      }
       this.handleReset('dialogForm')
     },
     handlePermissionCancelDialog() {
@@ -242,7 +280,19 @@ export default {
       this.showPermission = false;
       this.$message.success("设置成功");
       this.getRoleList();
-
+    },
+    handleCurrentChange(page) {
+      this.pager.pageNum = page
+      this.getRoleList()
+    },
+    handleQuery() {
+      this.pager.pageNum = 1
+      this.getRoleList()
+    },
+    handleReset() {
+      this.queryForm = {}
+      this.pager.pageNum = 1
+      this.getRoleList()
     }
   },
   mounted() {

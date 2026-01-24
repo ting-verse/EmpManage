@@ -85,7 +85,7 @@ export default {
       url:'/roles/operate',
       method:'post',
       data:params,
-      mock:true
+      // mock:true
     })
   },
   updatePermission(params) {
@@ -93,7 +93,7 @@ export default {
       url:'/roles/update/permission',
       method:'post',
       data:params,
-      mock:true
+      // mock:true
     })
   }
 }
