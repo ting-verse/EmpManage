@@ -111,7 +111,18 @@ export default {
         },
         {
           label: '权限列表',
-          prop: 'menuType',
+          prop: 'permissionList',
+          formatter: (row, column, value) => {
+            let names = [];
+            let list = value.halfCheckedKeys || [];
+            console.log(this.actionMap, 'actionMap')
+            list.map((key) => {
+              let name = this.actionMap[key];
+              if (key && name) names.push(name);
+            });
+            return names.join(",");
+          },
+
         },
         {
           label: '创建时间',
@@ -120,7 +131,8 @@ export default {
             return formateDate(value)
           }
         }
-      ]
+      ],
+      actionMap: {}
     }
   },
   methods: {
@@ -188,12 +200,32 @@ export default {
     async getMenuList() {
       const res = await this.$api.menuList()
       this.menuList = res
+      this.getActionMap(list)
+    },
+    getActionMap(list) {
+      let actionMap = {};
+      console.log(list, 'list')
+      const deep = (arr) => {
+        while (arr.length) {
+          let item = arr.pop();
+          if (item.children && item.action) {
+            actionMap[item._id] = item.menuName;
+          }
+          if (item.children) {
+            deep(item.children);
+          }
+        }
+      };
+      deep(JSON.parse(JSON.stringify(list)));
+      console.log(actionMap, 'actionMap')
+      this.actionMap = actionMap;
+
     },
     async handlePermissionSubmit() {
-      let nodes = this.$refs.permissionTree.getCheckedNodes();
-      let halfKeys = this.$refs.permissionTree.getHalfCheckedKeys();
-      let checkedKeys = [];
-      let parentKeys = [];
+      let nodes = this.$refs.permissionTree.getCheckedNodes();  // 获取所有选中的节点对象数组
+      let halfKeys = this.$refs.permissionTree.getHalfCheckedKeys();  // 获取半选中的节点ID数组
+      let checkedKeys = []; // 存储按钮级别权限（叶子节点）
+      let parentKeys = [];  // 存储父节点（分类）
       nodes.map((node) => {
         if (!node.children) {
           checkedKeys.push(node._id);
@@ -204,7 +236,7 @@ export default {
       let params = {
         _id: this.curRoleId,
         permissionList: {
-          checkedKeys,
+          checkedKeys, 
           halfCheckedKeys: parentKeys.concat(halfKeys),
         },
       };
