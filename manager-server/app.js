@@ -10,6 +10,7 @@ const log4js = require('./utils/log4j')
 const utils = require('./utils/util')
 const router = require('koa-router')()
 const roles = require('./routes/roles')
+const depts = require('./routes/depts')
 // const jwt = require('jsonwebtoken')
 const koajwt = require('koa-jwt')
 
@@ -56,6 +57,7 @@ router.prefix('/api')
 router.use(users.routes(), users.allowedMethods())
 router.use(menus.routes(), menus.allowedMethods())
 router.use(roles.routes(), roles.allowedMethods())
+router.use(depts.routes(), depts.allowedMethods())
 // routes
 app.use(router.routes(), router.allowedMethods())
 

@@ -38,7 +38,7 @@ export default {
       url:'/users/all/list',
       method:'get',
       data:{},
-      mock:true
+      // mock:true
     })
   },
   userDelete(params) {
@@ -62,7 +62,7 @@ export default {
       url:'/dept/list',
       method:'get',
       data: params,
-      mock:true
+      // mock:true
     })
   },
   userSubmit(params) {
@@ -110,7 +110,7 @@ export default {
       url:'/dept/operate',
       method:'post',
       data:params,
-      mock:true
+      // mock:true
     })
   }
 }

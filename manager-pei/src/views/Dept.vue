@@ -6,7 +6,7 @@
           <el-input v-model="queryForm.deptName" placeholder="请输入部门名称"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary">查询</el-button>
+          <el-button type="primary" @click="getDeptList">查询</el-button>
           <el-button @click="handleReset('queryForm')">重置</el-button>
         </el-form-item>
       </el-form>
@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import { formateDate } from '../utils/utils'
 export default {
   name: 'Dept',
   data() {
@@ -78,11 +79,17 @@ export default {
         },
         {
           label: '更新时间',
-          prop: 'updateTime'
+          prop: 'updateTime',
+          formatter: (row, column, value) => {
+            return formateDate(value)
+          }
         },
         {
           label: '创建时间',
-          prop: 'createTime'
+          prop: 'createTime',
+          formatter: (row, column, value) => {
+            return formateDate(value)
+          }
         }
       ],
       deptList: [],
@@ -92,15 +99,13 @@ export default {
       },
       userList: [],
       deptForm: {
+        _id: '',
         parentId: null,
         deptName: '',
         userName: '',
         userEmail: ''
       },
       rules: {
-        parentId: [
-          { required: true, message: '请选择上级部门', trigger: 'blur' }
-        ],
         deptName: [
           { required: true, message: '请输入部门名称', trigger: 'blur' }
         ],
@@ -135,6 +140,9 @@ export default {
       this.showDialog = true
       this.$nextTick(() => {
         Object.assign(this.deptForm, {
+          _id: row._id,
+          parentId: row.parentId,
+          deptName: row.deptName,
           userName: `${row.userId}/${row.userName}/${row.userEmail}`
         })
       })
@@ -153,7 +161,7 @@ export default {
     handleSubmit() {
       this.$refs.deptForm.validate(async (valid) => {
         if (valid) {
-          let params = { ...this.deptForm }
+          let params = { ...this.deptForm, action: this.action }
           delete params.userEmail
           let res = await this.$api.deptOperate(params)
           if (res) {
@@ -168,10 +176,9 @@ export default {
       })
     },
     handleChangeUserName(value) {
-      console.log(value)
       const [userId, userName, userEmail] = value.split('/')
       Object.assign(this.deptForm, { userId, userName, userEmail })
-    }
+    },
   },
   mounted() {
     this.getDeptList()

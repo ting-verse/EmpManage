@@ -121,6 +121,16 @@ router.post('/operate', async (ctx) => {
       ctx.body = utils.fail('更新失败')
     }
   }
-
 })
+
+// 获取所有用户列表
+router.get('/all/list', async ctx => {
+  try {
+    const list = await User.find({}, "userId userName userEmail")
+    ctx.body = utils.success(list)
+  } catch (error) {
+    ctx.body = utils.fail(error.message)
+  }
+})
+
 module.exports = router

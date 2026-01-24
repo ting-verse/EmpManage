@@ -113,7 +113,6 @@ export default {
           formatter: (row, column, value) => {
             let names = [];
             let list = value.halfCheckedKeys || [];
-            console.log(this.actionMap, 'actionMap')
             list.map((key) => {
               let name = this.actionMap[key];
               if (key && name) names.push(name);
@@ -240,7 +239,6 @@ export default {
     },
     getActionMap(list) {
       let actionMap = {};
-      console.log(list, 'list')
       const deep = (arr) => {
         while (arr.length) {
           let item = arr.pop();
@@ -253,7 +251,6 @@ export default {
         }
       };
       deep(JSON.parse(JSON.stringify(list)));
-      console.log(actionMap, 'actionMap')
       this.actionMap = actionMap;
 
     },

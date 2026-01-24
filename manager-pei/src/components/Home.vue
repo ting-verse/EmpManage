@@ -46,7 +46,6 @@ export default {
     async getMenuList() {
       try {
         const res = await this.$api.menuList()
-        console.log('API 返回的菜单数据:', res)
         this.userMenu = res || []
       } catch (error) {
         console.error('获取菜单列表失败:', error)
