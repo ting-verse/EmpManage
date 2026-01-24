@@ -79,17 +79,12 @@ router.post('/operate', async ctx => {
   }
 })
 
-// 更新角色权限
+// 权限设置
 router.post('/update/permission', async ctx => {
   const { _id, permissionList } = ctx.request.body
   try {
-    if (!_id) {
-      ctx.body = utils.fail('缺少角色ID')
-      return
-    }
-    let params = { permissionList }
-    params.updateTime = new Date()
-    const res = await Role.findByIdAndUpdate(_id, params, { new: true })
+    let params = { permissionList, updateTime: new Date() }
+    let res = await Role.findByIdAndUpdate(_id, params, { new: true })
     ctx.body = utils.success(res, '权限设置成功')
   } catch (error) {
     ctx.body = utils.fail(`权限设置失败:${error.stack}`)
