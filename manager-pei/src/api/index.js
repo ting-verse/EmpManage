@@ -33,6 +33,14 @@ export default {
       // mock:true
     })
   },
+  userAllList() {
+    return request({
+      url:'/users/all/list',
+      method:'get',
+      data:{},
+      mock:true
+    })
+  },
   userDelete(params) {
     return request({
       url:'/users/delete',
