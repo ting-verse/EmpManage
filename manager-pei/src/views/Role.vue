@@ -200,7 +200,7 @@ export default {
     async getMenuList() {
       const res = await this.$api.menuList()
       this.menuList = res
-      this.getActionMap(list)
+      this.getActionMap(res)
     },
     getActionMap(list) {
       let actionMap = {};

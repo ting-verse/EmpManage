@@ -41,11 +41,12 @@ export default {
       // mock:true
     })
   },
-  getRoleList() {
+  getRoleAllList() {
     return request({
       url:'/roles/allList',
       method:'get',
-      mock:true
+      data:{},
+      // mock:true
     })
   },
   getDeptList() {
