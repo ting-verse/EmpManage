@@ -57,6 +57,14 @@ const routes = [
           title: '休假申请'
         },
         component: () => import('../views/Leave.vue'),
+      },
+      {
+        name: '待审批',
+        path: '/audit/approve',
+        meta: {
+          title: '待审批'
+        },
+        component: () => import('../views/Approve.vue'),
       }
     ]
   },

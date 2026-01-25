@@ -11,6 +11,7 @@ const utils = require('./utils/util')
 const router = require('koa-router')()
 const roles = require('./routes/roles')
 const depts = require('./routes/depts')
+const leaves = require('./routes/leaves')
 // const jwt = require('jsonwebtoken')
 const koajwt = require('koa-jwt')
 
@@ -58,6 +59,7 @@ router.use(users.routes(), users.allowedMethods())
 router.use(menus.routes(), menus.allowedMethods())
 router.use(roles.routes(), roles.allowedMethods())
 router.use(depts.routes(), depts.allowedMethods())
+router.use(leaves.routes(), leaves.allowedMethods())
 // routes
 app.use(router.routes(), router.allowedMethods())
 

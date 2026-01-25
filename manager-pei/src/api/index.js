@@ -1,6 +1,7 @@
 import request from '../utils/request'
 
 export default {
+  // 登录
   login(params){
     return request({
       url:'/users/login',
@@ -9,14 +10,7 @@ export default {
       // mock:true
     })
   },
-  noticeCount() {
-    return request({
-      url:'/leave/count',
-      method:'get',
-      data:{},
-      mock:true
-    })
-  },
+  // 获取菜单列表
   menuList() {
     return request({
       url:'/menu/list',
@@ -25,6 +19,7 @@ export default {
       // mock:true
     })
   },
+  // 获取用户列表
   userList(params) {
     return request({
       url:'/users/list',
@@ -33,6 +28,7 @@ export default {
       // mock:true
     })
   },
+  // 获取所有用户列表
   userAllList() {
     return request({
       url:'/users/all/list',
@@ -41,6 +37,7 @@ export default {
       // mock:true
     })
   },
+  // 删除用户
   userDelete(params) {
     return request({
       url:'/users/delete',
@@ -49,6 +46,7 @@ export default {
       // mock:true
     })
   },
+  // 获取所有角色列表
   getRoleAllList() {
     return request({
       url:'/roles/allList',
@@ -57,6 +55,7 @@ export default {
       // mock:true
     })
   },
+  // 获取部门列表
   getDeptList(params) {
     return request({
       url:'/dept/list',
@@ -65,7 +64,8 @@ export default {
       // mock:true
     })
   },
-  userSubmit(params) {
+  // 用户操作
+    userSubmit(params) {
     return request({
       url:'/users/operate',
       method:'post',
@@ -73,6 +73,7 @@ export default {
       // mock:true
     })
   },
+  // 菜单操作
   menuSubmit(params) {
     return request({
       url:'/menu/operate',
@@ -81,6 +82,7 @@ export default {
       // mock:true
     })
   },
+  // 获取角色列表
   roleList(params) {
     return request({
       url:'/roles/list',
@@ -89,6 +91,7 @@ export default {
       // mock:true
     })
   },
+  // 角色操作
   roleOperate(params) {
     return request({
       url:'/roles/operate',
@@ -97,6 +100,7 @@ export default {
       // mock:true
     })
   },
+  // 更新权限
   updatePermission(params) {
     return request({
       url:'/roles/update/permission',
@@ -105,6 +109,7 @@ export default {
       // mock:true
     })
   },
+  // 部门操作
   deptOperate(params) {
     return request({
       url:'/dept/operate',
@@ -112,10 +117,20 @@ export default {
       data:params,
       // mock:true
     })
-  },
+  }, 
+  // 获取权限列表
   permissionList() {
     return request({
       url:'/users/getPermissionList',
+      method:'get',
+      data:{},
+      // mock:true
+    })
+  },
+  // 获取通知数量
+  noticeCount() {
+    return request({
+      url:'/leave/count',
       method:'get',
       data:{},
       // mock:true
@@ -127,7 +142,7 @@ export default {
       url:'/leave/list',
       method:'get',
       data:params,
-      mock:true
+      // mock:true
     })
   },
   // 申请单操作
@@ -136,7 +151,16 @@ export default {
       url:'/leave/operate',
       method:'post',
       data:params,
-      mock:true
+      // mock:true
     })
-  }
+  },
+  // 审批申请单
+  leaveApprove(params) {
+    return request({
+        url: '/leave/approve',
+        method: 'post',
+        data: params,
+        mock: false
+    })
+}
 }
