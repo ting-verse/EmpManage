@@ -13,14 +13,14 @@
     </div>
     <div class="base-table">
       <div class="action">
-        <el-button type="primary" @click="handleAdd">创建</el-button>
+        <el-button type="primary" @click="handleAdd" v-has="'dept_add'">创建</el-button>
       </div>
       <el-table :data="deptList" style="width: 100%" row-key="_id" :tree-props="{ children: 'children' }" stripe>
         <el-table-column v-for="item in columns" :key="item.prop" v-bind="item"></el-table-column>
         <el-table-column label="操作" width="180">
           <template #default="scope">
-            <el-button type="primary" size="mini" @click="handleEdit(scope.row)">编辑</el-button>
-            <el-button type="danger" size="mini" @click="handleDelete(scope.row)">删除</el-button>
+            <el-button type="primary" size="mini" @click="handleEdit(scope.row)" v-has="'dept_edit'">编辑</el-button>
+            <el-button type="danger" size="mini" @click="handleDelete(scope.row)" v-has="'dept_delete'">删除</el-button>
           </template>
         </el-table-column>
       </el-table>

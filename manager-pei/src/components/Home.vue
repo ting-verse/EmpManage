@@ -45,8 +45,10 @@ export default {
     },
     async getMenuList() {
       try {
-        const res = await this.$api.permissionList()
-        this.userMenu = res || []
+        const {menuList, actionList} = await this.$api.permissionList()
+        this.userMenu = menuList || []
+        this.$store.commit('saveMenuList', menuList)
+        this.$store.commit('saveActionList', actionList)
       } catch (error) {
         console.error('获取菜单列表失败:', error)
         this.userMenu = []

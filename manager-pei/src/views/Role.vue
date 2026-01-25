@@ -13,20 +13,20 @@
     </div>
     <div class="base-table">
       <div class="action">
-        <el-button type="primary" @click="handleAdd(1)">创建</el-button>
+        <el-button type="primary" @click="handleAdd(1)" v-has="'role_add'">创建</el-button>
       </div>
       <el-table :data="roleList" style="width: 100%" row-key="_id">
         <el-table-column v-for="item in columns" :key="item.prop" :prop="item.prop" :label="item.label"
           :width="item.width" :formatter="item.formatter" />
         <el-table-column label="操作" width="280">
           <template #default="scope">
-            <el-button type="primary" size="mini" @click="handleEdit(scope.row)">
+            <el-button type="primary" size="mini" @click="handleEdit(scope.row)" v-has="'role_edit'">
               编辑
             </el-button>
-            <el-button size="mini" @click="handlePermission(scope.row)">
+            <el-button size="mini" @click="handlePermission(scope.row)" v-has="'role_set_permission'">
               设置权限
             </el-button>
-            <el-button type="danger" size="mini" @click="handleDelete(scope.row._id)">
+            <el-button type="danger" size="mini" @click="handleDelete(scope.row._id)" v-has="'role_delete'">
               删除
             </el-button>
           </template>

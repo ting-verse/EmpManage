@@ -16,4 +16,17 @@ app.config.globalProperties.$request = request
 app.config.globalProperties.$storage = storage
 app.config.globalProperties.$api = api
 
+app.directive('has', {
+  mounted:(el, binding) => {
+    let userAction = storage.getItem('actionList') || []
+    let value = binding.value
+    let hasPermission = userAction.includes(value)
+    if (!hasPermission) {
+      el.style.display = 'none'
+      setTimeout(() => {
+        el.parentElement.removeChild(el)
+      }, 0)
+    }
+  } 
+})
 app.use(ElementPlus, { size: 'small' }).use(router).use(store).mount('#app')

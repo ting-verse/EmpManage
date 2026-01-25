@@ -139,8 +139,9 @@ router.get('/getPermissionList', async ctx => {
   try {
     const authorization = ctx.request.headers.authorization
     const { data } = utils.decoded(authorization)
-    const rootList = await getMenuList(data.role, data.roleList)
-    ctx.body = utils.success(rootList)
+    const menuList = await getMenuList(data.role, data.roleList)
+    const actionList = await getActionList(menuList)
+    ctx.body = utils.success({menuList, actionList})
   } catch (error) {
     ctx.body = utils.fail(error.message)
   }
@@ -157,10 +158,29 @@ async function getMenuList(userRole, roleKeys) {
       permissionList = checkedKeys.concat(halfCheckedKeys)
     })
     permissionList = [...new Set(permissionList)]
+    // 查找 _id 在 permissionList 中的文档 返回的是匹配的完整文档，不是只有 _id
     rootList = await Menu.find({ _id: { $in: permissionList } }) || []
   }
-
   return utils.getTree(rootList, null, [])
+}
+
+function getActionList(list) {
+  const actionList = []
+  const deep = (arr) => {
+    while (arr.length) {
+      let item = arr.pop();
+      if (item.action) {
+        item.action.map(action => {
+          actionList.push(action.menuCode)
+        })
+      }
+      if (item.children && !item.action) {
+        deep(item.children);
+      }
+    }
+  };
+  deep(JSON.parse(JSON.stringify(list)));
+  return actionList
 }
 
 module.exports = router
