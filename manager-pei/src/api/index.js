@@ -120,5 +120,23 @@ export default {
       data:{},
       // mock:true
     })
+  },
+  // 审批列表
+  getApplyList(params) {
+    return request({
+      url:'/leave/list',
+      method:'get',
+      data:params,
+      mock:true
+    })
+  },
+  // 申请单操作
+  leaveOperate(params) {
+    return request({
+      url:'/leave/operate',
+      method:'post',
+      data:params,
+      mock:true
+    })
   }
 }

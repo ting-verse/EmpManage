@@ -49,6 +49,14 @@ const routes = [
           title: '部门管理'
         },
         component: () => import('../views/Dept.vue'),
+      },
+      {
+        name: '休假申请',
+        path: '/audit/leave',
+        meta: {
+          title: '休假申请'
+        },
+        component: () => import('../views/Leave.vue'),
       }
     ]
   },
@@ -74,7 +82,6 @@ const router = createRouter({
   history: createWebHistory(),
   routes
 })
-
 
 function checkPermission(path) {
   let hasPermission = router.getRoutes().filter(route => route.path === path).length
