@@ -47,4 +47,37 @@ module.exports = {
     }
     return ""
   },
+  getTree(rootList, id, list) {
+    for (let i = 0; i < rootList.length; i++) {
+      let item = rootList[i]
+      // 处理 parentId 可能是数组、单个值或 null 的情况
+      let itemParentId = null
+      if (item.parentId) {
+        if (Array.isArray(item.parentId)) {
+          // 如果是数组，取最后一个值
+          itemParentId = item.parentId.length > 0 ? String(item.parentId[item.parentId.length - 1]) : null
+        } else {
+          // 如果是单个值，直接转换
+          itemParentId = String(item.parentId)
+        }
+      }
+      
+      // 匹配父级ID，parentId 为 null 表示顶级节点
+      if ((id === null && itemParentId === null) || 
+          (id !== null && itemParentId === String(id))) {
+        list.push(item._doc || item)
+      }
+    }
+    list.map(item => {
+      item.children = []
+      this.getTree(rootList, item._id, item.children)
+      if (item.children.length == 0) {
+        delete item.children;
+      } else if (item.children.length > 0 && item.children[0].menuType == 2) {
+        // 快速区分按钮和菜单，用于后期做菜单按钮权限控制
+        item.action = item.children;
+      }
+    })
+    return list;
+  },
 }

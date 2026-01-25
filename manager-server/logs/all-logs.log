@@ -1636,3 +1636,160 @@
 [2026-01-25T13:42:37.957] [INFO] info - ***数据库连接成功***
 [2026-01-25T13:42:44.935] [INFO] info - ***数据库连接成功***
 [2026-01-25T13:43:23.787] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:43:28.835] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:43:39.342] [INFO] info - get params: {}
+[2026-01-25T13:43:39.343] [INFO] info - post params: {"userName":"admin","userPwd":"admin"}
+[2026-01-25T13:43:39.423] [INFO] info - get params: {}
+[2026-01-25T13:43:39.423] [INFO] info - post params: {}
+[2026-01-25T13:49:46.045] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:50:14.801] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:50:39.334] [INFO] info - get params: {}
+[2026-01-25T13:50:39.335] [INFO] info - post params: {}
+[2026-01-25T13:51:35.069] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:51:50.734] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:51:52.298] [INFO] info - get params: {}
+[2026-01-25T13:51:52.299] [INFO] info - post params: {}
+[2026-01-25T13:53:10.428] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:53:13.271] [INFO] info - get params: {}
+[2026-01-25T13:53:13.272] [INFO] info - post params: {}
+[2026-01-25T13:53:22.640] [INFO] info - get params: {"deptName":""}
+[2026-01-25T13:53:22.641] [INFO] info - post params: {}
+[2026-01-25T13:53:22.645] [INFO] info - get params: {}
+[2026-01-25T13:53:22.645] [INFO] info - post params: {}
+[2026-01-25T13:53:24.544] [INFO] info - get params: {}
+[2026-01-25T13:53:24.545] [INFO] info - post params: {}
+[2026-01-25T13:53:24.548] [INFO] info - get params: {"total":"0","pageNum":"1","pageSize":"12"}
+[2026-01-25T13:53:24.548] [INFO] info - post params: {}
+[2026-01-25T13:53:25.324] [INFO] info - get params: {}
+[2026-01-25T13:53:25.324] [INFO] info - post params: {}
+[2026-01-25T13:53:25.832] [INFO] info - get params: {}
+[2026-01-25T13:53:25.832] [INFO] info - post params: {}
+[2026-01-25T13:53:25.836] [INFO] info - get params: {"userId":"","userName":"","state":"1","pageNum":"1","pageSize":"10","total":"10"}
+[2026-01-25T13:53:25.836] [INFO] info - post params: {}
+[2026-01-25T13:53:25.839] [INFO] info - get params: {}
+[2026-01-25T13:53:25.839] [INFO] info - post params: {}
+[2026-01-25T13:53:27.608] [INFO] info - get params: {"deptName":""}
+[2026-01-25T13:53:27.609] [INFO] info - post params: {}
+[2026-01-25T13:53:27.612] [INFO] info - get params: {}
+[2026-01-25T13:53:27.612] [INFO] info - post params: {}
+[2026-01-25T13:53:31.819] [INFO] info - get params: {"deptName":""}
+[2026-01-25T13:53:31.820] [INFO] info - post params: {}
+[2026-01-25T13:53:31.823] [INFO] info - get params: {}
+[2026-01-25T13:53:31.823] [INFO] info - post params: {}
+[2026-01-25T13:53:31.826] [INFO] info - get params: {}
+[2026-01-25T13:53:31.826] [INFO] info - post params: {}
+[2026-01-25T13:53:34.545] [INFO] info - get params: {"deptName":""}
+[2026-01-25T13:53:34.545] [INFO] info - post params: {}
+[2026-01-25T13:53:34.548] [INFO] info - get params: {}
+[2026-01-25T13:53:34.548] [INFO] info - post params: {}
+[2026-01-25T13:53:34.551] [INFO] info - get params: {}
+[2026-01-25T13:53:34.551] [INFO] info - post params: {}
+[2026-01-25T13:53:56.243] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:56:54.697] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:57:28.240] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:57:40.343] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:57:43.922] [INFO] info - get params: {}
+[2026-01-25T13:57:43.923] [INFO] info - post params: {}
+[2026-01-25T13:57:43.939] [INFO] info - get params: {"deptName":""}
+[2026-01-25T13:57:43.939] [INFO] info - post params: {}
+[2026-01-25T13:57:43.943] [INFO] info - get params: {}
+[2026-01-25T13:57:43.943] [INFO] info - post params: {}
+[2026-01-25T13:58:57.639] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:58:58.318] [INFO] info - get params: {"deptName":""}
+[2026-01-25T13:58:58.318] [INFO] info - post params: {}
+[2026-01-25T13:58:58.329] [INFO] info - get params: {}
+[2026-01-25T13:58:58.330] [INFO] info - post params: {}
+[2026-01-25T13:58:58.334] [INFO] info - get params: {}
+[2026-01-25T13:58:58.334] [INFO] info - post params: {}
+[2026-01-25T13:59:16.642] [INFO] info - ***数据库连接成功***
+[2026-01-25T13:59:18.328] [INFO] info - get params: {}
+[2026-01-25T13:59:18.329] [INFO] info - post params: {}
+[2026-01-25T13:59:18.340] [INFO] info - get params: {"deptName":""}
+[2026-01-25T13:59:18.341] [INFO] info - post params: {}
+[2026-01-25T13:59:18.344] [INFO] info - get params: {}
+[2026-01-25T13:59:18.344] [INFO] info - post params: {}
+[2026-01-25T13:59:55.418] [INFO] info - ***数据库连接成功***
+[2026-01-25T14:00:01.747] [INFO] info - ***数据库连接成功***
+[2026-01-25T14:00:03.920] [INFO] info - get params: {"deptName":""}
+[2026-01-25T14:00:03.921] [INFO] info - post params: {}
+[2026-01-25T14:00:03.937] [INFO] info - get params: {}
+[2026-01-25T14:00:03.938] [INFO] info - post params: {}
+[2026-01-25T14:00:03.941] [INFO] info - get params: {}
+[2026-01-25T14:00:03.942] [INFO] info - post params: {}
+[2026-01-25T14:00:09.583] [INFO] info - ***数据库连接成功***
+[2026-01-25T14:00:22.763] [INFO] info - ***数据库连接成功***
+[2026-01-25T14:04:23.312] [INFO] info - ***数据库连接成功***
+[2026-01-25T14:04:30.761] [INFO] info - ***数据库连接成功***
+[2026-01-25T14:05:20.616] [INFO] info - ***数据库连接成功***
+[2026-01-25T14:09:30.499] [INFO] info - get params: {}
+[2026-01-25T14:09:30.500] [INFO] info - post params: {"userName":"admin","userPwd":"admin"}
+[2026-01-25T14:09:30.577] [INFO] info - get params: {}
+[2026-01-25T14:09:30.577] [INFO] info - post params: {}
+[2026-01-25T14:09:34.708] [INFO] info - get params: {"deptName":""}
+[2026-01-25T14:09:34.708] [INFO] info - post params: {}
+[2026-01-25T14:09:34.711] [INFO] info - get params: {}
+[2026-01-25T14:09:34.711] [INFO] info - post params: {}
+[2026-01-25T14:09:35.213] [INFO] info - get params: {"total":"0","pageNum":"1","pageSize":"12"}
+[2026-01-25T14:09:35.213] [INFO] info - post params: {}
+[2026-01-25T14:09:35.217] [INFO] info - get params: {}
+[2026-01-25T14:09:35.217] [INFO] info - post params: {}
+[2026-01-25T14:09:37.957] [INFO] info - get params: {}
+[2026-01-25T14:09:37.957] [INFO] info - post params: {}
+[2026-01-25T14:09:37.960] [INFO] info - get params: {}
+[2026-01-25T14:09:37.960] [INFO] info - post params: {}
+[2026-01-25T14:09:37.963] [INFO] info - get params: {"userId":"","userName":"","state":"1","pageNum":"1","pageSize":"10","total":"10"}
+[2026-01-25T14:09:37.963] [INFO] info - post params: {}
+[2026-01-25T14:09:47.970] [INFO] info - get params: {}
+[2026-01-25T14:09:47.971] [INFO] info - post params: {}
+[2026-01-25T14:09:49.626] [INFO] info - get params: {"userId":"","userName":"","state":"1","pageNum":"1","pageSize":"10","total":"10"}
+[2026-01-25T14:09:49.626] [INFO] info - post params: {}
+[2026-01-25T14:09:49.629] [INFO] info - get params: {}
+[2026-01-25T14:09:49.629] [INFO] info - post params: {}
+[2026-01-25T14:09:49.632] [INFO] info - get params: {}
+[2026-01-25T14:09:49.633] [INFO] info - post params: {}
+[2026-01-25T14:09:55.509] [INFO] info - get params: {"total":"0","pageNum":"1","pageSize":"12"}
+[2026-01-25T14:09:55.509] [INFO] info - post params: {}
+[2026-01-25T14:09:55.513] [INFO] info - get params: {}
+[2026-01-25T14:09:55.513] [INFO] info - post params: {}
+[2026-01-25T14:10:14.067] [INFO] info - get params: {}
+[2026-01-25T14:10:14.068] [INFO] info - post params: {"_id":"69746cff8ef58c085a7e96d5","permissionList":{"checkedKeys":["69745352508fbb60a00f2901","69745376508fbb60a00f2908"],"halfCheckedKeys":["69731da1c383141ab3245935","697318ade927ff1e461ee466","69731d4fc383141ab3245932"]}}
+[2026-01-25T14:10:14.097] [INFO] info - get params: {"total":"15","pageNum":"1","pageSize":"12"}
+[2026-01-25T14:10:14.098] [INFO] info - post params: {}
+[2026-01-25T14:10:21.327] [INFO] info - get params: {}
+[2026-01-25T14:10:21.328] [INFO] info - post params: {"userName":"user","userPwd":"user"}
+[2026-01-25T14:10:21.358] [INFO] info - get params: {}
+[2026-01-25T14:10:21.359] [INFO] info - post params: {}
+[2026-01-25T14:10:25.318] [INFO] info - get params: {}
+[2026-01-25T14:10:25.318] [INFO] info - post params: {}
+[2026-01-25T14:10:45.611] [INFO] info - get params: {}
+[2026-01-25T14:10:45.611] [INFO] info - post params: {}
+[2026-01-25T14:11:06.245] [INFO] info - get params: {}
+[2026-01-25T14:11:06.245] [INFO] info - post params: {"userName":"user","userPwd":"user"}
+[2026-01-25T14:11:06.281] [INFO] info - get params: {}
+[2026-01-25T14:11:06.281] [INFO] info - post params: {}
+[2026-01-25T14:11:26.690] [INFO] info - get params: {}
+[2026-01-25T14:11:26.691] [INFO] info - post params: {}
+[2026-01-25T14:11:36.560] [INFO] info - get params: {}
+[2026-01-25T14:11:36.560] [INFO] info - post params: {"userName":"user","userPwd":"user"}
+[2026-01-25T14:11:36.596] [INFO] info - get params: {}
+[2026-01-25T14:11:36.596] [INFO] info - post params: {}
+[2026-01-25T14:11:42.676] [INFO] info - get params: {}
+[2026-01-25T14:11:42.677] [INFO] info - post params: {}
+[2026-01-25T14:12:28.098] [INFO] info - ***数据库连接成功***
+[2026-01-25T14:12:28.827] [INFO] info - get params: {}
+[2026-01-25T14:12:28.828] [INFO] info - post params: {}
+[2026-01-25T14:12:44.549] [INFO] info - get params: {}
+[2026-01-25T14:12:44.550] [INFO] info - post params: {"userName":"admin","userPwd":"admin"}
+[2026-01-25T14:12:44.585] [INFO] info - get params: {}
+[2026-01-25T14:12:44.585] [INFO] info - post params: {}
+[2026-01-25T14:12:50.895] [INFO] info - get params: {}
+[2026-01-25T14:12:50.895] [INFO] info - post params: {}
+[2026-01-25T14:13:16.238] [INFO] info - ***数据库连接成功***
+[2026-01-25T14:13:26.299] [INFO] info - ***数据库连接成功***
+[2026-01-25T14:13:34.068] [INFO] info - ***数据库连接成功***
+[2026-01-25T14:13:35.822] [INFO] info - get params: {}
+[2026-01-25T14:13:35.822] [INFO] info - post params: {}
+[2026-01-25T14:13:44.842] [INFO] info - get params: {}
+[2026-01-25T14:13:44.844] [INFO] info - post params: {"userName":"admin","userPwd":"admin"}
+[2026-01-25T14:13:44.877] [INFO] info - get params: {}
+[2026-01-25T14:13:44.877] [INFO] info - post params: {}

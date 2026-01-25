@@ -3,6 +3,8 @@ const User = require('../models/userSchema')
 const Counter = require('../models/counterSchema')
 const utils = require('../utils/util.js')
 const jwt = require('jsonwebtoken')
+const Menu = require('../models/menuSchema')
+const Role = require('../models/roleSchema')
 // const md5 = require('md5')
 router.prefix('/users')
 
@@ -135,12 +137,30 @@ router.get('/all/list', async ctx => {
 
 router.get('/getPermissionList', async ctx => {
   try {
-    let authorization = ctx.request.headers.authorization
-    let userInfo = utils.decoded(authorization)
-    ctx.body = utils.success(userInfo)
+    const authorization = ctx.request.headers.authorization
+    const { data } = utils.decoded(authorization)
+    const rootList = await getMenuList(data.role, data.roleList)
+    ctx.body = utils.success(rootList)
   } catch (error) {
     ctx.body = utils.fail(error.message)
   }
 })
+
+async function getMenuList(userRole, roleKeys) {
+  let rootList = [], permissionList = []
+  if (userRole == 0) {
+    rootList = await Menu.find({}) || []
+  } else {
+    let roleList = await Role.find({ _id: { $in: roleKeys } })
+    roleList.map(role => {
+      let {checkedKeys = [], halfCheckedKeys = []} = role.permissionList || {}
+      permissionList = checkedKeys.concat(halfCheckedKeys)
+    })
+    permissionList = [...new Set(permissionList)]
+    rootList = await Menu.find({ _id: { $in: permissionList } }) || []
+  }
+
+  return utils.getTree(rootList, null, [])
+}
 
 module.exports = router
