@@ -45,7 +45,7 @@ export default {
     },
     async getMenuList() {
       try {
-        const res = await this.$api.menuList()
+        const res = await this.$api.permissionList()
         this.userMenu = res || []
       } catch (error) {
         console.error('获取菜单列表失败:', error)

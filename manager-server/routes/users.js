@@ -14,7 +14,7 @@ router.post('/login', async ctx => {
 
     if (res) {
       const data = res._doc
-      const token = jwt.sign({ data: 'footbar' }, 'ting', { expiresIn: '1h' })
+      const token = jwt.sign({ data }, 'ting', { expiresIn: '10h' })
       data.token = token
       ctx.body = utils.success(data)
     } else {
@@ -128,6 +128,16 @@ router.get('/all/list', async ctx => {
   try {
     const list = await User.find({}, "userId userName userEmail")
     ctx.body = utils.success(list)
+  } catch (error) {
+    ctx.body = utils.fail(error.message)
+  }
+})
+
+router.get('/getPermissionList', async ctx => {
+  try {
+    let authorization = ctx.request.headers.authorization
+    let userInfo = utils.decoded(authorization)
+    ctx.body = utils.success(userInfo)
   } catch (error) {
     ctx.body = utils.fail(error.message)
   }

@@ -112,5 +112,13 @@ export default {
       data:params,
       // mock:true
     })
+  },
+  permissionList() {
+    return request({
+      url:'/users/getPermissionList',
+      method:'get',
+      data:{},
+      // mock:true
+    })
   }
 }

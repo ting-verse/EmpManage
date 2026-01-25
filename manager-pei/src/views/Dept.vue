@@ -139,12 +139,7 @@ export default {
       this.action = "edit"
       this.showDialog = true
       this.$nextTick(() => {
-        Object.assign(this.deptForm, {
-          _id: row._id,
-          parentId: row.parentId,
-          deptName: row.deptName,
-          userName: `${row.userId}/${row.userName}/${row.userEmail}`
-        })
+        Object.assign(this.deptForm, row)
       })
     },
     async handleDelete(_id) {
