@@ -13,7 +13,7 @@
     </div>
     <div class="base-table">
       <div class="action">
-        <el-button type="primary" @click="handleAdd" v-has="'dept_add'">创建</el-button>
+        <el-button type="primary" @click="handleAdd" v-has="'dept_create'">创建</el-button>
       </div>
       <el-table :data="deptList" style="width: 100%" row-key="_id" :tree-props="{ children: 'children' }" stripe>
         <el-table-column v-for="item in columns" :key="item.prop" v-bind="item"></el-table-column>

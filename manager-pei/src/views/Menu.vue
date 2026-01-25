@@ -19,7 +19,7 @@
     </div>
     <div class="base-table">
       <div class="action">
-        <el-button type="primary" @click="handleAdd(1)" v-has="'menu_add'">创建</el-button>
+        <el-button type="primary" @click="handleAdd(1)" v-has="'menu_create'">创建</el-button>
       </div>
       <el-table :data="menuList" style="width: 100%" row-key="_id">
         <el-table-column v-for="item in columns" :key="item.prop" :prop="item.prop" :label="item.label"
